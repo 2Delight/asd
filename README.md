@@ -47,7 +47,7 @@ The service have to be accessible and functioning with a high level of availabil
 The system must provide secure access control to configurations, jobs and pipelines, including authentication, authorization and ensuring the security of job runners and other infrastructure components.
 
 - **Recoverability**   
-The CI/CD platform must restore to a functional state after failures, including regular back ups of configurations, pipelines and jobs. After failing master node system should give master's rights to one of the slave nodes. After slave's disaster system should continue work correctly
+The CI/CD platform must restore to a functional state after failures, including regular back ups of configurations, pipelines and jobs. After failing master node system should give master's rights to one of the slave nodes. After slave's disaster system should continue work correctly.
 
 - **Maintainability**   
 The system should be easy to extend and update without a significant downtime or complete system restart.
