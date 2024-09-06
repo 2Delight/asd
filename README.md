@@ -1,22 +1,24 @@
 # MLine
 
-## Summary
+## Requirements
+
+### Summary
 
 The presented software is a CI/CD platform that allows user to launch complex pipelines in containers both from VSCode and web interface
 
-## Stakeholders
+### Stakeholders
 - Developers
 - DevOps/SRE-engineers
 - Q/A-engineers
 - Investors
 - Society
 
-## Expected Needs
+### Expected Needs
 - Delivary releases
 - Rollback releases
 - Validate and test releases
 
-## Features
+### Features
 - Store configurations
 - Edit configurations (?)
 - Run pipelines that are described in the configurations
@@ -28,7 +30,7 @@ The presented software is a CI/CD platform that allows user to launch complex pi
 - Validation of configuration
 
 
-## Constraints
+### Constraints
 - Max memory for configuration: 2Mb
 - Max X multi-stage tasks
 - Container Resources RAM 1Gb, 2 CPU
@@ -36,3 +38,9 @@ The presented software is a CI/CD platform that allows user to launch complex pi
 - Filesystem (?)
 - Timeout
 - Job has UUID
+
+## Architecture
+
+### Draft
+
+![Architecture](diagrams/architecture.drawio.svg)
