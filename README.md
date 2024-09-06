@@ -43,4 +43,4 @@ The presented software is a CI/CD platform that allows user to launch complex pi
 
 ### Draft
 
-![Architecture](diagrams/architecture.drawio.svg)
+![Architecture](diagrams/draft-architecture.drawio.svg)
