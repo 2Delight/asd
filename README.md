@@ -24,6 +24,7 @@ TODO: Add more description
 ### Features
 
 - Store configurations
+- Validation of configuration
 - Edit configurations (?)
 - Run pipelines that are described in the configurations
 - Execute multi-stage tasks
@@ -31,7 +32,7 @@ TODO: Add more description
 - Pipelines rely on each other
 - VS Code extension
 - Web application 
-- Validation of configuration
+
 
 TODO: Look in more requirement-specific constraints 
 ### Constraints
