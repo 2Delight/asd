@@ -4,7 +4,7 @@
 
 ### Summary
 
-The framework is able to run complex multistage pipelines from docker containers and services with code adaptation within the stages. The specification of a pipeline follows a ML experiment domain model defined as a semantic network represented in YAML. A web editor would be both an extension to VS Code and a Progressive Web App (PWA) served directly from a web site. The editor would implement a visual editor of the experiment specification with a library of predefined and custom types, code completion and code linting
+The framework is able to run complex multistage pipelines from docker containers and services with code adaptation within the stages. The specification of a pipeline follows a ML experiment domain model defined as a semantic network represented in YAML. A web editor would be both an extension to VS Code and a Progressive Web App (PWA) served directly from a web site. The editor would implement a visual editor of the experiment specification with a library of predefined and custom types, code completion and code linting.
 
 ### Stakeholders
 
@@ -28,12 +28,10 @@ TODO: Add more description
 - Edit configurations (?)
 - Run pipelines that are described in the configurations
 - Execute multi-stage tasks
-- Logging status information
-- Pipelines rely on each other
-- VS Code extension
-- Web application 
-
-
+- **Logging status information:** possibility to watch logs to identify problems in cases of faults or track tests passing.
+- **VS Code extension:** launching piplines exactly from VS Code can help users not being distracted by visition web site and clicking the right link.
+- **Web application:** for users who prefer using web version, platform can suggest user-friendly interface, the website is completed with up-to-date technology like Progressive Web Application.
+  
 TODO: Look in more requirement-specific constraints 
 ### Constraints
 
