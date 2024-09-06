@@ -52,13 +52,13 @@ The CI/CD platform must restore to a functional state after failures, including 
 - **Maintainability**   
 The system should be easy to extend and update without a significant downtime or complete system restart.
 
-- **Usability**    
-The platform should be accessible in VS Code and a Progressive Web App (PWA) served directly from a web site. The system interface should be easy to managing pipelines, configuring jobs and monitoring results. 
+- **Usability**   
+ The platform should be accessible in VS Code and a Progressive Web App (PWA) served directly from a web site. The system interface should be easy to managing pipelines, configuring jobs and monitoring results. 
 
-- **Consistency**  
+- **Consistency**   
 The system must guarantee that jobs and pipelines run consistently across different environments and runners. Pipeline management across multiple runners should be seamless and transparent.
 
-- **Traceability**  
+- **Traceability**   
 The platfrom must provide linking between job runners and pipelines, including audit logs and tracking changes in configurations.
 
 
