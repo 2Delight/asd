@@ -11,6 +11,8 @@ The framework is able to run complex multistage pipelines from docker containers
 - Developers
 - DevOps/SRE-engineers
 - Q/A-engineers
+- Tech specialists
+- Other people who use CI/CD or commit to repos
 - Investors
 - Society
 
@@ -20,13 +22,12 @@ The framework is able to run complex multistage pipelines from docker containers
 - Rollback releases
 - Validate and test releases
 
-TODO: Add more description
 ### Features
 
-- Store and edit configurations
-- Validation of configuration
-- Edit configurations (?)
-- Run pipelines that are described in the configurations
+- **Store configurations:** allows users save configuration for further pipeline launches.
+- **Edit configurations:** built-in editor allows users to quickly change and save updates for pipelines configurations.
+- **Validation of configuration:** automatically checks job configurations for syntax errors helps validate pipeline scripts, ensuring they are error-free before execution. In edit mode helps users to write configs correctly with autocompletion and hints.
+- **Run pipelines that are described in the configurations:** allows users to execute defined pipelines from Configuration Storage, leveraging robust scheduling and triggering capabilities.
 - **Execute multi-stage tasks:** users can decompose tasks into smaller ones and launch multi-staged pipelines that have parts relying on each other.
 - **Logging status information:** possibility to see logs to identify problems in cases of faults, track tests passing or adjusting stages for particular purposes.
 - **VS Code extension:** launching piplines exactly from VS Code extension can help users not being distracted by visiting web site to track results, but have a quick visual demonstration.
