@@ -23,42 +23,32 @@ The framework is able to run complex multistage pipelines from docker containers
 TODO: Add more description
 ### Features
 
-- Store configurations
+- Store and edit configurations
 - Validation of configuration
 - Edit configurations (?)
 - Run pipelines that are described in the configurations
-- **Execute multi-stage tasks:** users can decompose tasks into smaller parts and launch multi-staged piplines.
-- **Logging status information:** possibility to watch logs to identify problems in cases of faults, track tests passing or adjusting stages for particular purposes.
+- **Execute multi-stage tasks:** users can decompose tasks into smaller ones and launch multi-staged pipelines that have parts relying on each other.
+- **Logging status information:** possibility to see logs to identify problems in cases of faults, track tests passing or adjusting stages for particular purposes.
 - **VS Code extension:** launching piplines exactly from VS Code extension can help users not being distracted by visiting web site to track results, but have a quick visual demonstration.
 - **Web application:** for users who prefer using web version, platform can suggest user-friendly interface, where logs of each stage can be accessed, the website is completed with up-to-date technology Progressive Web Application.
-  
-TODO: Look in more requirement-specific constraints 
+
 ### Constraints
 
-- **Scalability**  
-The system should support both horizontal and vertical scaling to handle more increasing workloads and a growing number of simultaneously running pipelines.
-  
-- **Reliability**   
-The service have to be accessible and functioning with a high level of availability (e.g., 99.9%), including failover strategies.
-  
-- **Security**   
-The system must provide secure access control to configurations, jobs and pipelines, including authentication, authorization and ensuring the security of job runners and other infrastructure components.
+- **Security**
+The system must provide secure access to system data including configurations, results of jobs and pipelines. It will be achived via authentication, authorization and ensuring the security of job runners and other infrastructure components. Moreover, we embrace whitelist approach.
 
-- **Recoverability**   
-The CI/CD platform must restore to a functional state after failures, including regular back ups of configurations, pipelines and jobs. After failing master node system should give master's rights to one of the slave nodes. After slave's disaster system should continue work correctly.
+- **Maintainability**
+The system should be easy to extend with new features and integrations. It will be achieved with multilayered architectury approach of writing code. Also, every entity will have separate non-intersecting functionality which will make system more flexible.
 
-- **Maintainability**   
-The system should be easy to extend and update without a significant downtime or complete system restart.
+- **Usability**
+The platform must support multiple interfaces: VS Code extension and web UI. It lets user to operate efficiently. The UI must be friendly, so user with low experience of using CI/CD can navigate easily. The will also provide a web-editor with auto-completion hints.
 
-- **Usability**   
- The platform should be accessible in VS Code and a Progressive Web App (PWA) served directly from a web site. The system interface should be easy to managing pipelines, configuring jobs and monitoring results. 
+- **Reliability**
+  - **Availability**: The service have to provide a high level of SLA (e. g. 99.9%) and be reachable/available as much time as possible.
+  - **Recoverability**: The system must be able to restore to a functional state after failures within not longer period than. Regular back ups of configurations, results of pipelines and jobs must be provided, too.
 
-- **Consistency**   
-The system must guarantee that jobs and pipelines run consistently across different environments and runners. Pipeline management across multiple runners should be seamless and transparent.
-
-- **Traceability**   
-The platfrom must provide linking between job runners and pipelines, including audit logs and tracking changes in configurations.
-
+- **Observability**
+For maintainers debug logging and tracing must be provided. For users, container logs should be provided
 
 ## Architecture
 
