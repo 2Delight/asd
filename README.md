@@ -11,8 +11,7 @@ The framework is able to run complex multistage pipelines from docker containers
 - Developers
 - DevOps/SRE-engineers
 - Q/A-engineers
-- Tech specialists
-- Other people who use CI/CD or commit to repos
+- Other tech specialists and managers who interact with CI/CD
 - Investors
 - Society
 
