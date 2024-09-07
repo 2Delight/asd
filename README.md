@@ -27,10 +27,10 @@ TODO: Add more description
 - Validation of configuration
 - Edit configurations (?)
 - Run pipelines that are described in the configurations
-- Execute multi-stage tasks
-- **Logging status information:** possibility to watch logs to identify problems in cases of faults or track tests passing.
-- **VS Code extension:** launching piplines exactly from VS Code can help users not being distracted by visition web site and clicking the right link.
-- **Web application:** for users who prefer using web version, platform can suggest user-friendly interface, the website is completed with up-to-date technology like Progressive Web Application.
+- **Execute multi-stage tasks:** users can decompose tasks into smaller parts and launch multi-staged piplines.
+- **Logging status information:** possibility to watch logs to identify problems in cases of faults, track tests passing or adjusting stages for particular purposes.
+- **VS Code extension:** launching piplines exactly from VS Code extension can help users not being distracted by visiting web site to track results, but have a quick visual demonstration.
+- **Web application:** for users who prefer using web version, platform can suggest user-friendly interface, where logs of each stage can be accessed, the website is completed with up-to-date technology Progressive Web Application.
   
 TODO: Look in more requirement-specific constraints 
 ### Constraints
