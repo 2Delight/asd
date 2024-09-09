@@ -1,5 +1,23 @@
 # MLine
 
+## Team
+
+### Name
+
+0x22E
+
+### Project
+
+Web editor for reproducible pipelines
+
+### Members
+
+- Polyakova Kseniya
+- Sidorenkov Oleg
+- Timonin Anton
+- Timonin Egor
+- Tsvetkova Mariya
+
 ## Requirements
 
 ### Summary
