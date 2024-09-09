@@ -12,11 +12,11 @@ Web editor for reproducible pipelines
 
 ### Members
 
-- Polyakova Kseniya
-- Sidorenkov Oleg
-- Timonin Anton
-- Timonin Egor
-- Tsvetkova Mariya
+- Kseniya Polyakova
+- Oleg Sidorenkov
+- Anton Timonin
+- Egor Timonin
+- Mariya Tsvetkova
 
 ## Requirements
 
