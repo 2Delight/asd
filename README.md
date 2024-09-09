@@ -16,7 +16,7 @@ Web editor for reproducible pipelines
 - Oleg Sidorenkov
 - Anton Timonin
 - Egor Timonin
-- Mariya Tsvetkova
+- Tsvetkova Maria Andreevna
 
 ## Requirements
 
