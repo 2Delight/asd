@@ -41,14 +41,19 @@ The framework is able to run complex multistage pipelines from docker containers
 
 ### Features
 
-- **Store configurations:** allows users save configuration for further pipeline launches.
-- **Edit configurations:** built-in editor allows users to quickly change and save updates for pipelines configurations.
-- **Validation of configuration:** automatically checks job configurations for syntax errors helps validate pipeline scripts, ensuring they are error-free before execution. In edit mode helps users to write configs correctly with autocompletion and hints.
-- **Run pipelines that are described in the configurations:** allows users to execute defined pipelines from Configuration Storage, leveraging robust scheduling and triggering capabilities.
-- **Execute multi-stage tasks:** users can decompose tasks into smaller ones and launch multi-staged pipelines that have parts relying on each other.
-- **Logging status information:** possibility to see logs to identify problems in cases of faults, track tests passing or adjusting stages for particular purposes.
-- **VS Code extension:** launching piplines exactly from VS Code extension can help users not being distracted by visiting web site to track results, but have a quick visual demonstration.
-- **Web application:** for users who prefer using web version, platform can suggest user-friendly interface, where logs of each stage can be accessed, the website is completed with up-to-date technology Progressive Web Application.
+- **Store configurations** - After user set up configuration, they can save it for future. So after that users can refer to this configurations either for launching pipelines or for creating new ones.
+- **Edit configurations** - Project provides easy to use built-in editor that allows users to quickly modify and save updates for pipelines configurations. In addition editor helps users to write configurations correctly with autocompletion and hints to save users time.
+- **Validation of configuration** - Automatical checking job configurations for syntax errors is included and it helps to validate pipeline scripts, ensuring they are error-free before execution. If validation of configuration file is not passed, user will be informed about that.
+- **VS Code extension** - Project provides users special VS Code extension for launching piplines exactly from VS Code. This option can help users not being distracted by visiting web site to track results, but have a quick visual demonstration of the resuls of tests, etc.
+- **Web application** - There is also web version, for users who wants to get comprehensive information about launched jobs. Web application can suggest user-friendly interface, where logs of each stage can be accessed, the website is completed with up-to-date technology Progressive Web Application.
+
+
+**Run pipelines that are described in the configurations** - allows users to execute defined pipelines from Configuration Storage, leveraging robust scheduling and triggering capabilities.
+
+**Execute multi-stage tasks:** users can decompose tasks into smaller ones and launch multi-staged pipelines that have parts relying on each other.
+
+**Logging status information:** possibility to see logs to identify problems in cases of faults, track tests passing or adjusting stages for particular purposes.
+
 
 ### Constraints
 
