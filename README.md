@@ -22,7 +22,7 @@ Web editor for reproducible pipelines
 
 ### Summary
 
-The framework is able to run complex multistage pipelines from docker containers and services with code adaptation within the stages. The specification of a pipeline follows a ML experiment domain model defined as a semantic network represented in YAML. A web editor would be both an extension to VS Code and a Progressive Web App (PWA) served directly from a web site. The editor would implement a visual editor of the experiment specification with a library of predefined and custom types, code completion and code linting.
+Web editor for reproducible pipelines designed for creating, editing, validating specifications with a library of predefined and custom types that follow an ML experiment domain model defined as a semantic network represented in YAML. The editor could be used as an extension in VS Code or as Web App (WPA) served from website.
 
 ### Stakeholders
 
@@ -54,11 +54,15 @@ The framework is able to run complex multistage pipelines from docker containers
 
 **Logging status information:** possibility to see logs to identify problems in cases of faults, track tests passing or adjusting stages for particular purposes.
 
+- **Store specifications:** allows users save specification either by their own or via customizable autosave.
+- **Edit specifications:** built-in editor allows users to easily edit pipelines specifications without need to leave website or IDE.
+- **Specifications validation:** automatically checks job specifications for syntax errors, helps validate pipeline scripts, ensuring they are error-proof without need to execute.
+- **Code hints**: includes code highlighting, autocompletion and prompts (e. g. entity name automatic suggestions) and highly customizable linting.
 
 ### Constraints
 
 - **Security**
-The system must provide secure access to system data including configurations, results of jobs and pipelines. It will be achived via authentication, authorization and ensuring the security of job runners and other infrastructure components. Moreover, we embrace whitelist approach.
+The system must provide secure access to specifications. It will be achived via authentication, authorization and ensuring the security of job runners and other infrastructure components. Moreover, we embrace whitelist approach.
 
 - **Maintainability**
 The system should be easy to extend with new features and integrations. It will be achieved with multilayered architectury approach of writing code. Also, every entity will have separate non-intersecting functionality which will make system more flexible.
