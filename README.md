@@ -22,7 +22,7 @@ Web editor for reproducible pipelines
 
 ### Summary
 
-Web editor for reproducible pipelines designed for creating, editing, validating specifications with a library of predefined and custom types that follow a ML experiment domain model defined as a semantic network represented in YAML. The editor could be used as an extension in VS Code or as Web App (WPA) served from website.
+Web editor for reproducible pipelines designed for creating, editing, validating specifications with a library of predefined and custom types that follow an ML experiment domain model defined as a semantic network represented in YAML. The editor could be used as an extension in VS Code or as Web App (WPA) served from website.
 
 ### Stakeholders
 
@@ -41,19 +41,15 @@ Web editor for reproducible pipelines designed for creating, editing, validating
 
 ### Features
 
-- **Store configurations:** allows users save configuration for further pipeline launches.
-- **Edit configurations:** built-in editor allows users to quickly change and save updates for pipelines configurations.
-- **Validation of configuration:** automatically checks job configurations for syntax errors helps validate pipeline scripts, ensuring they are error-free before execution. In edit mode helps users to write configs correctly with autocompletion and hints.
-- **Run pipelines that are described in the configurations:** allows users to execute defined pipelines from Configuration Storage, leveraging robust scheduling and triggering capabilities.
-- **Execute multi-stage tasks:** users can decompose tasks into smaller ones and launch multi-staged pipelines that have parts relying on each other.
-- **Logging status information:** possibility to see logs to identify problems in cases of faults, track tests passing or adjusting stages for particular purposes.
-- **VS Code extension:** launching piplines exactly from VS Code extension can help users not being distracted by visiting web site to track results, but have a quick visual demonstration.
-- **Web application:** for users who prefer using web version, platform can suggest user-friendly interface, where logs of each stage can be accessed, the website is completed with up-to-date technology Progressive Web Application.
+- **Store specifications:** allows users save specification either by their own or via customizable autosave.
+- **Edit specifications:** built-in editor allows users to easily edit pipelines specifications without need to leave website or IDE.
+- **Specifications validation:** automatically checks job specifications for syntax errors, helps validate pipeline scripts, ensuring they are error-proof without need to execute.
+- **Code hints**: includes code highlighting, autocompletion and prompts (e. g. entity name automatic suggestions) and highly customizable linting.
 
 ### Constraints
 
 - **Security**
-The system must provide secure access to system data including configurations, results of jobs and pipelines. It will be achived via authentication, authorization and ensuring the security of job runners and other infrastructure components. Moreover, we embrace whitelist approach.
+The system must provide secure access to specifications. It will be achived via authentication, authorization and ensuring the security of job runners and other infrastructure components. Moreover, we embrace whitelist approach.
 
 - **Maintainability**
 The system should be easy to extend with new features and integrations. It will be achieved with multilayered architectury approach of writing code. Also, every entity will have separate non-intersecting functionality which will make system more flexible.
