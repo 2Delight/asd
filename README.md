@@ -40,24 +40,22 @@ Web editor for reproducible pipelines designed for creating, editing, validating
 - Validate and test releases
 
 ### Features
+- **Viewing specification** - Users have access to their specifications in the web application and also in VS Code extension. So there are two features that are connected with viewing specifications:
+	- Viewing YAML - YAML is a user-friendly data serialization format that is well structured, easy to browse and analyze. In this format it is easy for the human eye to see the details of interest.
+	- Syntax Highlighting - this feature allows users to avoid confusion while watching specification file, because it also helps human eye to structure information and make it is easy to read and find some defects in realization.
 
-- **Store configurations** - After user set up configuration, they can save it for future. So after that users can refer to this configurations either for launching pipelines or for creating new ones.
-- **Edit configurations** - Project provides easy to use built-in editor that allows users to quickly modify and save updates for pipelines configurations. In addition editor helps users to write configurations correctly with autocompletion and hints to save users time.
-- **Validation of configuration** - Automatical checking job configurations for syntax errors is included and it helps to validate pipeline scripts, ensuring they are error-free before execution. If validation of configuration file is not passed, user will be informed about that.
-- **VS Code extension** - Project provides users special VS Code extension for launching piplines exactly from VS Code. This option can help users not being distracted by visiting web site to track results, but have a quick visual demonstration of the resuls of tests, etc.
-- **Web application** - There is also web version, for users who wants to get comprehensive information about launched jobs. Web application can suggest user-friendly interface, where logs of each stage can be accessed, the website is completed with up-to-date technology Progressive Web Application.
+- **Edit specification** - Project provides users with such important possibility like editing configurations, because this is how different defects may be removed. Some details:
+	- Editing YAML - As it was written before, YAML is structured, so for users it is very convenient to edit specifications, that are stored in YAML format.
+	- Autocompletion - This option is added to the project to help users to edit specifications, so the system can suggest to continue command or job name, etc, so that users do not have to write full commands.
 
+- **Save specification** - Users need to have an option to save their specification files, not to lose some changes that were made. Systems, having option of saving may have two different features: 
+	- Manual saves - Users can choose a particular time for saving by themselves, so their specification files might be saved on the particular stage, that users need.
+	- Autosaving - System has special feature that helps users not to lose their changes made in specification files in some unexpected situations, such as the electricity went out. So user doesn't have to save everything manually, everything will be saved automatically.
 
-**Run pipelines that are described in the configurations** - allows users to execute defined pipelines from Configuration Storage, leveraging robust scheduling and triggering capabilities.
+- **Validation of specificaion** - It is rather important for system to have validation of specification files, that can save much time for users.
+	- Customizable linting - Linter scans user's specification files for areas that require to be removed, so it can save user's time.
+	- Static Analysis - This feature helps users to detect some bugs or mismatches in specification files.
 
-**Execute multi-stage tasks:** users can decompose tasks into smaller ones and launch multi-staged pipelines that have parts relying on each other.
-
-**Logging status information:** possibility to see logs to identify problems in cases of faults, track tests passing or adjusting stages for particular purposes.
-
-- **Store specifications:** allows users save specification either by their own or via customizable autosave.
-- **Edit specifications:** built-in editor allows users to easily edit pipelines specifications without need to leave website or IDE.
-- **Specifications validation:** automatically checks job specifications for syntax errors, helps validate pipeline scripts, ensuring they are error-proof without need to execute.
-- **Code hints**: includes code highlighting, autocompletion and prompts (e. g. entity name automatic suggestions) and highly customizable linting.
 
 ### Constraints
 
