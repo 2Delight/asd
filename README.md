@@ -40,6 +40,7 @@ Web editor for reproducible pipelines designed for creating, editing, validating
 - Validate and test releases
 
 ### Features
+
 - **Viewing specification** - Users have access to their specifications in the web application and also in VS Code extension. So there are two features that are connected with viewing specifications:
 	- Viewing YAML - YAML is a user-friendly data serialization format that is well structured, easy to browse and analyze. In this format it is easy for the human eye to see the details of interest.
 	- Syntax Highlighting - this feature allows users to avoid confusion while watching specification file, because it also helps human eye to structure information and make it is easy to read and find some defects in realization.
@@ -52,10 +53,15 @@ Web editor for reproducible pipelines designed for creating, editing, validating
 	- Manual saves - Users can choose a particular time for saving by themselves, so their specification files might be saved on the particular stage, that users need.
 	- Autosaving - System has special feature that helps users not to lose their changes made in specification files in some unexpected situations, such as the electricity went out. So user doesn't have to save everything manually, everything will be saved automatically.
 
-- **Validation of specificaion** - It is rather important for system to have validation of specification files, that can save much time for users.
+- **Specification Validation** - It is rather important for system to have validation of specification files, that can save much time for users.
 	- Customizable linting - Linter scans user's specification files for areas that require to be removed, so it can save user's time.
 	- Static Analysis - This feature helps users to detect some bugs or mismatches in specification files.
 
+- **Code Hints** - includes code highlighting, autocompletion and prompts (e. g. entity name automatic suggestions) and highly customizable linting.
+
+- **Repository Integration** - all the changes can be applied to a GitLab/GitHub repository specification file.
+
+- **Framework Integration** - specification state changes affect the MLOps platform via CI/CD framework integration.
 
 ### Constraints
 
