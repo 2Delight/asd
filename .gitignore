@@ -3,12 +3,17 @@
 
 
 # dependencies
+/vs-extension/node_modules
+/vs-extension/.pnp
+/vs-extension/.pnp.js
+/vs-extension/.yarn/install-state.gz
 /web-app/node_modules
 /web-app/.pnp
 /web-app/.pnp.js
 /web-app/.yarn/install-state.gz
 
 # testing
+/vs-extension/coverage
 /web-app/coverage
 
 # next.js
