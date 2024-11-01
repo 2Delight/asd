@@ -1,71 +1,35 @@
-# vs-extension README
+# Mline: Basic YAML Linter for VS Code
 
-This is the README for your extension "vs-extension". After writing up a brief description, we recommend including the following sections.
+Mline is a VS Code extension that provides basic linting for YAML files. It checks for syntax errors and ensures the presence of required keys.
 
 ## Features
 
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
+• **Syntax Error Detection:** Highlights syntax errors during YAML parsing.
+• **Required Key Validation:** Verifies that the keys `present_model`, `pipeline`, and `stages` are present in your YAML file.
+• **Real-time Linting:**  Provides immediate feedback as you type.
 
-For example if there is an image subfolder under your extension project workspace:
 
-\!\[feature X\]\(images/feature-x.png\)
+## Installation
 
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
+1. Open VS Code.
+2. Go to the Extensions view (Ctrl+Shift+X).
+3. Search for "Mline" and click "Install".
 
-## Requirements
+## Usage
 
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
+Mline automatically validates any open YAML files.  Errors will be displayed as underlines in the editor.  The extension currently checks for:
 
-## Extension Settings
+• **YAML Syntax Errors:**  Incorrect YAML formatting will be highlighted.
+• **Missing Required Keys:**  The keys `present_model`, `pipeline`, and `stages` are required at the top level of the YAML.  If any are missing, an error will be reported.
 
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
 
-For example:
+## Limitations
 
-This extension contributes the following settings:
+• This extension currently performs only basic validation.  It does not perform comprehensive schema validation beyond checking for required keys.  More sophisticated checks (data type validation, etc.) are not yet implemented.
+• Error reporting might not be perfectly accurate in all cases, especially with complex YAML structures.
 
-* `myExtension.enable`: Enable/disable this extension.
-* `myExtension.thing`: Set to `blah` to do something.
-
-## Known Issues
-
-Calling out known issues can help limit users opening duplicate issues against your extension.
 
 ## Release Notes
 
-Users appreciate release notes as you update your extension.
-
 ### 1.0.0
-
-Initial release of ...
-
-### 1.0.1
-
-Fixed issue #.
-
-### 1.1.0
-
-Added features X, Y, and Z.
-
----
-
-## Following extension guidelines
-
-Ensure that you've read through the extensions guidelines and follow the best practices for creating your extension.
-
-* [Extension Guidelines](https://code.visualstudio.com/api/references/extension-guidelines)
-
-## Working with Markdown
-
-You can author your README using Visual Studio Code. Here are some useful editor keyboard shortcuts:
-
-* Split the editor (`Cmd+\` on macOS or `Ctrl+\` on Windows and Linux).
-* Toggle preview (`Shift+Cmd+V` on macOS or `Shift+Ctrl+V` on Windows and Linux).
-* Press `Ctrl+Space` (Windows, Linux, macOS) to see a list of Markdown snippets.
-
-## For more information
-
-* [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
-* [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
-
-**Enjoy!**
+• Initial release

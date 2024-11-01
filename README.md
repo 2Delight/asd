@@ -102,6 +102,11 @@ gateway-api ходит по grpc integrator-api
 httPort: 8082
 grpcPort: 8083
 
+### validator-api
+
+httPort: 8084
+grpcPort: 8085
+
 
 ## LLM Prompts
 LLM: ChatGPT o1-mini
