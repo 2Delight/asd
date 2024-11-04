@@ -1,0 +1,5 @@
+Swift is a powerful language for iOS development
+Pattern matching in Swift is versatile
+Concurrency in iOS is achieved using Grand Central Dispatch
+Error handling in Swift provides strong safety guarantees
+SwiftUI is a declarative framework for building UIs
