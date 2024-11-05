@@ -79,5 +79,5 @@ Amount of solutions: 92
 | Method                                       | Solver           | Change algorithm | Change data representation | Add functionality | Seem more performance | Ease of reuse |
 |----------------------------------------------|------------------|------------------|----------------------------|-------------------|-----------------------|---------------|
 | Implicit invocation, event-driven (4)        | Ksenia Poliakova | +                | -                          | +                 | +                     | -             |
-| Pipes-and-filters (3)                        | Oleg Sidorenkov  | -                | +                          | -                 | -                     | +             |
-| Abstract Data Types (1)                      | Egor Timonin     | +                | -                          | +                 | +                     | -             |
+| Pipes-and-filters (3)                        | Oleg Sidorenkov  | +                | -                          | +                 | -                     | -             |
+| Abstract Data Types (1)                      | Egor Timonin     | -                | +                          | -                 | -                     | -             |
