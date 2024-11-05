@@ -23,7 +23,7 @@ python main.py
 | Method                                       | Solver           | Change algorithm | Change data representation | Add functionality | Seem more performance | Ease of reuse |
 |----------------------------------------------|------------------|------------------|----------------------------|-------------------|-----------------------|---------------|
 | Shared Data (2)                              | Ksenia Poliakova | +                | -                          | +                 | +                     | -             |
-| Abstract Data Types (1)                      | Oleg Sidorenkov  | -                | +                          | -                 | -                     | +             |
+| Abstract Data Types (1)                      | Oleg Sidorenkov  | +                | -                          | +                 | -                     | -             |
 | Implicit invocation, event-driven (4)        | Egor Timonin     | +                | -                          | +                 | +                     | -             |
 
 ### Answering questions
