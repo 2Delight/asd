@@ -29,10 +29,14 @@ python main.py
 ### Answering questions
 
 #### a) in which case it is easier to change the implementation algorithm in each of the modules? 
+It is easier to change the implementation algorithm in two methods: in shared data method and event-driven. Shared data method can handle changes better as it offers a simpler formula. And in event-driven modules are isolated and they communicate through events.
 #### b) in which solution it is easier (= seemingly less effort) to change data representation
+
 #### c) in which solution it is easier to add additional functions to the modules
 #### d) which solution is seemingly more performant?
+Event-driven method seems to be with high performance, because tasks are driven asynchronously, so that can save some time. Abstract Data types doesn't seem to be high performance, as there we use a lot of classes, they consume much memory, that's why Shared Data is also okay.
 #### e) if you are asked to implement a similar program, which of the solutions would you reuse?
+Abstract Data Types method contains several classes, that's why it is easier to reuse.
 
 # Problem B - Eight Queens (8Q)
 
