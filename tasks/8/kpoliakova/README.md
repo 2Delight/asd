@@ -1,6 +1,7 @@
-### Poliakova Ksenia
+##
+ Poliakova Ksenia
 
-## Problem A - Key Word in Context (KWIC)
+# Problem A - Key Word in Context (KWIC)
 
 I solved this problem with method 2 (Main/Subroutine with stepwise refinement or Shared Data).
 Text is hardcoded in program in variable text, for example:
@@ -25,9 +26,15 @@ python main.py
 | Abstract Data Types (1)                      | Oleg Sidorenkov  | -                | +                          | -                 | -                     | +             |
 | Implicit invocation, event-driven (4)        | Egor Timonin     | +                | -                          | +                 | +                     | -             |
 
+### Answering questions
 
+#### a) in which case it is easier to change the implementation algorithm in each of the modules? 
+#### b) in which solution it is easier (= seemingly less effort) to change data representation
+#### c) in which solution it is easier to add additional functions to the modules
+#### d) which solution is seemingly more performant?
+#### e) if you are asked to implement a similar program, which of the solutions would you reuse?
 
-## Problem B - Eight Queens (8Q)
+# Problem B - Eight Queens (8Q)
 
 I solved this problem with method 4 (Implicit invocation or event-driven).
 To get the result, please get additional file all_possible_placements.txt from [here](https://disk.yandex.com/d/kawmuTKwB37F3g).
@@ -79,5 +86,13 @@ Amount of solutions: 92
 | Method                                       | Solver           | Change algorithm | Change data representation | Add functionality | Seem more performance | Ease of reuse |
 |----------------------------------------------|------------------|------------------|----------------------------|-------------------|-----------------------|---------------|
 | Implicit invocation, event-driven (4)        | Ksenia Poliakova | +                | -                          | +                 | +                     | -             |
-| Pipes-and-filters (3)                        | Oleg Sidorenkov  | +                | -                          | +                 | -                     | -             |
-| Abstract Data Types (1)                      | Egor Timonin     | -                | +                          | -                 | -                     | -             |
+| Pipes-and-filters (3)                        | Oleg Sidorenkov  | -                | +                          | -                 | -                     | +             |
+| Abstract Data Types (1)                      | Egor Timonin     | +                | -                          | +                 | +                     | -             |
+
+### Answering questions
+
+#### a) in which case it is easier to change the implementation algorithm in each of the modules? 
+#### b) in which solution it is easier (= seemingly less effort) to change data representation
+#### c) in which solution it is easier to add additional functions to the modules
+#### d) which solution is seemingly more performant?
+#### e) if you are asked to implement a similar program, which of the solutions would you reuse?
