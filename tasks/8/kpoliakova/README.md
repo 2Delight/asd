@@ -17,11 +17,14 @@ The result of algorith will be written in command line. So how to launch it:
 python main.py
 ```
 
-| Who solved the task|                  |  |
-| ------------- |:------------------:| -----:|
-|  |   |  |
-|  |   |   |
-|  |   |   |
+### Table for comparison of different methods for Problem A
+
+| Method                                       | Solver           | Change algorithm | Change data representation | Add functionality | Seem more performance | Ease of reuse |
+|----------------------------------------------|------------------|------------------|----------------------------|-------------------|-----------------------|---------------|
+| Shared Data (2)                              | Ksenia Poliakova | +                | -                          | +                 | +                     | -             |
+| Abstract Data Types (1)                      | Oleg Sidorenkov  | -                | +                          | -                 | -                     | +             |
+| Implicit invocation, event-driven (4)        | Egor Timonin     | +                | -                          | +                 | +                     | -             |
+
 
 
 ## Problem B - Eight Queens (8Q)
@@ -70,3 +73,11 @@ Output examples:
 
 Amount of solutions: 92
 ```
+
+### Table for comparison of different methods for Problem B
+
+| Method                                       | Solver           | Change algorithm | Change data representation | Add functionality | Seem more performance | Ease of reuse |
+|----------------------------------------------|------------------|------------------|----------------------------|-------------------|-----------------------|---------------|
+| Implicit invocation, event-driven (4)        | Ksenia Poliakova | +                | -                          | +                 | +                     | -             |
+| Pipes-and-filters (3)                        | Oleg Sidorenkov  | -                | +                          | -                 | -                     | +             |
+| Abstract Data Types (1)                      | Egor Timonin     | +                | -                          | +                 | +                     | -             |
