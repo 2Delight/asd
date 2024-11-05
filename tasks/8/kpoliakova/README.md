@@ -97,8 +97,9 @@ Amount of solutions: 92
 ### Answering questions
 
 #### a) in which case it is easier to change the implementation algorithm in each of the modules? 
+In abstract data types modules are connected tightly and it means that by changing algorythm we need to change severl modules. We cannot say the same about other methods.
 #### b) in which solution it is easier (= seemingly less effort) to change data representation
-
+In event-driven method it's difficult to change representation for one subscriber without affecting other.
 #### c) in which solution it is easier to add additional functions to the modules
 In abstract data types adding new functionality means that it is usually required to change related modules, because components more connected and have dependencies on each other. But for other methods it's easier to add additional functions.
 #### d) which solution is seemingly more performant?
