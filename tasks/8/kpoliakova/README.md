@@ -1,6 +1,6 @@
 ### Poliakova Ksenia
 
-#### Problem A - Key Word in Context (KWIC)
+## Problem A - Key Word in Context (KWIC)
 
 I solved this problem with method 2 (Main/Subroutine with stepwise refinement or Shared Data).
 Text is hardcoded in program in variable text, for example:
@@ -17,7 +17,14 @@ The result of algorith will be written in command line. So how to launch it:
 python main.py
 ```
 
-#### Problem B - Eight Queens (8Q)
+| Who solved the task|                  |  |
+| ------------- |:------------------:| -----:|
+|  |   |  |
+|  |   |   |
+|  |   |   |
+
+
+## Problem B - Eight Queens (8Q)
 
 I solved this problem with method 4 (Implicit invocation or event-driven).
 To get the result, please get additional file all_possible_placements.txt from [here](https://disk.yandex.com/d/kawmuTKwB37F3g).
