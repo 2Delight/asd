@@ -87,7 +87,7 @@ Amount of solutions: 92
 |----------------------------------------------|------------------|------------------|----------------------------|-------------------|-----------------------|---------------|
 | Implicit invocation, event-driven (4)        | Ksenia Poliakova | +                | -                          | +                 | +                     | -             |
 | Pipes-and-filters (3)                        | Oleg Sidorenkov  | -                | +                          | -                 | -                     | +             |
-| Abstract Data Types (1)                      | Egor Timonin     | +                | -                          | +                 | +                     | -             |
+| Abstract Data Types (1)                      | Egor Timonin     | -                | +                          | -                 | -                     | -             |
 
 ### Answering questions
 
