@@ -2,7 +2,7 @@
 
 #### Problem A - Key Word in Context (KWIC)
 
-I realized this problem with method 2 (Main/Subroutine with stepwise refinement or Shared Data).
+I solved this problem with method 2 (Main/Subroutine with stepwise refinement or Shared Data).
 Text is hardcoded in program in variable text, for example:
 
 ```
@@ -12,4 +12,16 @@ text = "For example, a search query including all of the words in an example def
     "information (not shown in the following example)."
 ```
 
-The result of algorith will be written in command line.
+The result of algorith will be written in command line. So how to launch it:
+```
+python main.py
+```
+
+##### Comparison
+
+#### Problem B - Eight Queens (8Q)
+
+I solved this problem with method 4 (Implicit invocation or event-driven).
+To get the result, please get additional file all_possible_placements.txt from [here](https://disk.yandex.com/d/kawmuTKwB37F3g).
+
+
