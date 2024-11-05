@@ -1,7 +1,11 @@
-### Rationale for eliciting classes for problem B, method 1
+## Problem A, method 4
 
-I extracted class Queen to separate logic of checking availability of the place 
-from class QueenProblemResolver which defines the logic for the solution and store solutions for the problem
+### How to launch programm
+```
+python problem_A_method_4.py
+```
+
+### Comparsion
 
 | Problem                 | Method                                | Solver          | Change algorithm | Change data representation | Add functionality | Seem more performance | Ease of reuse |
 |-------------------------|---------------------------------------|-----------------|------------------|----------------------------|-------------------|-----------------------|---------------|
@@ -35,6 +39,21 @@ so this method could be performing if we required to solve task sequentially, wh
 
 e) If you are asked to implement a similar program, which of the solutions would you reuse?
 ADT method seems more useful for tasks which could have a good separation of modules with well-defined responsibilities and behaviours.
+
+
+## Problem B, method 1
+
+### How to launch programm
+```
+python problem_B_method_1.py
+```
+
+### Rationale for eliciting classes for problem B, method 1
+
+I extracted class Queen to separate logic of checking availability of the place 
+from class QueenProblemResolver which defines the logic for the solution and store solutions for the problem
+
+### Comparsion
 
 | Problem          | Method                                | Solver           | Change algorithm | Change data representation | Add functionality | Seem more performance | Ease of reuse |
 |------------------|---------------------------------------|------------------|------------------|----------------------------|-------------------|-----------------------|---------------|
