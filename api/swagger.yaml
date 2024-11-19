@@ -9,6 +9,34 @@ paths:
       responses:
         '200':
           description: OK
+        '504':
+          description: Failed to ping service
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseError'
+  /gateway/v1/specifications:
+    post:
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RepositoryURL'
+      responses:
+        '200':
+          description: OK
+        '404':
+          description: Failed to find specification
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseError'
+        '504':
+          description: Failed to connect to the service
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseError'
 
   /validator/v1/ping:
     get:
@@ -16,8 +44,11 @@ paths:
         '200':
           description: OK
         '504':
-          description: Failed to ping service
-  
+          description: Failed to ping the service
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseError'
   /validator/v1/validate-specification:
     post:
       requestBody:
@@ -40,7 +71,11 @@ paths:
               schema:
                 $ref: '#/components/schemas/Report'
         '504':
-          description: Failed to connect to service
+          description: Failed to connect to the service
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseError'
 
   /worker/v1/ping:
     get:
@@ -49,9 +84,21 @@ paths:
           description: OK
         '504':
           description: Failed to ping service
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseError'
 
 components:
   schemas:
+    ResponseError:
+      type: object
+      properties:
+        code:
+          type: integer
+        message:
+          type: string
+
     Error:
       type: object
     Hint:
