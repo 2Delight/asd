@@ -1,0 +1,14 @@
+openapi: '3.0.3'
+info:
+  title: MLine
+  version: '0.1.0'
+
+# servers:
+#   - url: https://api.server.test
+
+paths:
+  /v1/ping:
+    get:
+      responses:
+        '200':
+          description: OK
