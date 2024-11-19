@@ -3,12 +3,72 @@ info:
   title: MLine
   version: '0.1.0'
 
-# servers:
-#   - url: https://api.server.test
-
 paths:
-  /v1/ping:
+  /gateway/v1/ping:
     get:
       responses:
         '200':
           description: OK
+
+  /validator/v1/ping:
+    get:
+      responses:
+        '200':
+          description: OK
+        '504':
+          description: Failed to ping service
+  
+  /validator/v1/validate-specification:
+    post:
+      requestBody:
+        content:
+          application/octet-stream:
+            schema:
+              type: string
+              format: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Report'
+        '400':
+          description: Specification errors found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Report'
+        '504':
+          description: Failed to connect to service
+
+  /worker/v1/ping:
+    get:
+      responses:
+        '200':
+          description: OK
+        '504':
+          description: Failed to ping service
+
+components:
+  schemas:
+    Error:
+      type: object
+    Hint:
+      type: object
+    Report:
+      type: object
+      properties:
+        errors:
+          type: array
+          items:
+            $ref: "#/components/schemas/Error"
+        hints:
+          type: array
+          $ref: "#/components/schemas/Hint"
+
+    RepositoryURL:
+      type: string
+    
+    SpecificationContents:
+      type: string
