@@ -26,7 +26,77 @@ paths:
         '200':
           description: OK
         '404':
-          description: Failed to find specification
+          description: Failed to locate target specification
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseError'
+        '504':
+          description: Failed to connect to the service
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseError'
+  /gateway/v1/specifications/push:
+    post:
+      parameters:
+        - name: specification-url
+          in: query
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/octet-stream:
+            schema:
+              type: string
+              format: string
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Failed to push specification
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseError'
+        '404':
+          description: Failed to locate target specification
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseError'
+        '504':
+          description: Failed to connect to the service
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseError'
+  /gateway/v1/specifications/submit:
+    post:
+      parameters:
+        - name: mlops-id
+          in: query
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/octet-stream:
+            schema:
+              type: string
+              format: string
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Failed to submit specification
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseError'
+        '404':
+          description: Failed to locate target specification
           content:
             application/json:
               schema:
