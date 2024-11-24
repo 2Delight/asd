@@ -1,0 +1,345 @@
+openapi: 3.0.3
+info:
+  title: Microservices API
+  version: 1.0.0
+  description: Централизованный Swagger для Gateway, Worker, и Validator Service.
+
+tags:
+  - name: Gateway
+    description: Методы для работы с Gateway Service.
+  - name: Worker
+    description: Методы для работы с Worker Service.
+  - name: Validator
+    description: Методы для работы с Validator Service.
+
+paths:
+  # --- Gateway Service ---
+  /gateway/specifications/{id}:
+    get:
+      tags:
+        - Gateway
+      summary: Получить спецификацию
+      description: Возвращает спецификацию по её идентификатору.
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+          description: Уникальный идентификатор спецификации.
+      responses:
+        '200':
+          description: Успешно возвращена спецификация.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Specification'
+        '404':
+          description: Спецификация не найдена.
+    put:
+      tags:
+        - Gateway
+      summary: Обновить спецификацию
+      description: Сохраняет изменения в спецификации.
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+          description: Уникальный идентификатор спецификации.
+      requestBody:
+        description: Обновленные данные спецификации.
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Specification'
+      responses:
+        '200':
+          description: Спецификация успешно обновлена.
+        '400':
+          description: Ошибка обновления.
+
+  /gateway/specifications/{id}/status:
+    get:
+      tags:
+        - Gateway
+      summary: Получить статус спецификации
+      description: Возвращает текущий статус выполнения спецификации.
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+          description: Уникальный идентификатор спецификации.
+      responses:
+        '200':
+          description: Успешно возвращен статус.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+        '404':
+          description: Спецификация не найдена.
+    post:
+      tags:
+        - Gateway
+      summary: Обновить статус спецификации
+      description: Обновляет статус спецификации (после завершения коммита/MLDev).
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+          description: Уникальный идентификатор спецификации.
+      requestBody:
+        description: Новый статус спецификации.
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/StatusUpdate'
+      responses:
+        '200':
+          description: Статус успешно обновлен.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StatusUpdateResponse'
+        '400':
+          description: Ошибка обновления.
+
+  /gateway/specifications/{id}/validate:
+    post:
+      tags:
+        - Gateway
+      summary: Запросить валидацию спецификации
+      description: Выполняет валидацию спецификации и возвращает результат.
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+          description: Уникальный идентификатор спецификации.
+      requestBody:
+        description: Данные спецификации для валидации.
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Specification'
+      responses:
+        '200':
+          description: Успешно возвращен результат валидации.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationResult'
+
+  # --- Worker Service ---
+  /worker/specifications/{id}/save:
+    post:
+      tags:
+        - Worker
+      summary: Сохранить спецификацию
+      description: Сохраняет спецификацию в Git (коммит и пуш).
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+          description: Уникальный идентификатор спецификации.
+      requestBody:
+        description: Спецификация для сохранения.
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Specification'
+      responses:
+        '200':
+          description: Успешный коммит и пуш спецификации.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommitPushResult'
+
+  /worker/specifications/{id}/run-mldev:
+    post:
+      tags:
+        - Worker
+      summary: Запустить MLDev
+      description: Запускает MLDev для выполнения пайплайна. Использует путь к спецификации.
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+          description: Уникальный идентификатор спецификации.
+      requestBody:
+        description: Путь к спецификации.
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MLDevPath'
+      responses:
+        '200':
+          description: Успешный запуск MLDev.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MLDevResult'
+
+  /worker/specifications/{id}/get:
+    get:
+      tags:
+        - Worker
+      summary: Получить спецификацию
+      description: Получает спецификацию из Git по указанному пути.
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+          description: Уникальный идентификатор спецификации.
+      responses:
+        '200':
+          description: Успешно получена спецификация.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Specification'
+
+  # --- Validator Service ---
+  /validator/specifications/validate:
+    post:
+      tags:
+        - Validator
+      summary: Провалидировать спецификацию
+      description: Выполняет валидацию спецификации и возвращает найденные ошибки и подсказки.
+      requestBody:
+        description: Спецификация для валидации.
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Specification'
+      responses:
+        '200':
+          description: Успешная валидация спецификации.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationResult'
+
+components:
+  schemas:
+    Specification:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: Уникальный идентификатор спецификации.
+        name:
+          type: string
+          description: Название спецификации.
+        content:
+          type: string
+          description: YAML-контент спецификации.
+        gitPath:
+          type: string
+          description: Путь к репозиторию Git.
+
+    CommitPushResult:
+      type: object
+      properties:
+        commitHash:
+          type: string
+          description: Хэш успешного коммита.
+        isSuccess:
+          type: boolean
+          description: Успешность выполнения операции.
+
+    MLDevPath:
+      type: object
+      properties:
+        path:
+          type: string
+          description: Путь к файлу спецификации в Git.
+
+    MLDevResult:
+      type: object
+      properties:
+        isSuccess:
+          type: boolean
+          description: Успешность выполнения пайплайна.
+        artifacts:
+          type: array
+          items:
+            type: string
+          description: Пути к результатам выполнения.
+
+    Status:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: Уникальный идентификатор статуса.
+        name:
+          type: string
+          description: Название статуса (например, "committed", "completed").
+
+    StatusUpdate:
+      type: object
+      properties:
+        newStatus:
+          type: string
+          description: Новый статус.
+
+    StatusUpdateResponse:
+      type: object
+      properties:
+        isSuccess:
+          type: boolean
+          description: Успешность выполнения.
+
+    ValidationResult:
+      type: object
+      properties:
+        isValid:
+          type: boolean
+          description: Является ли спецификация валидной.
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Error'
+        hints:
+          type: array
+          items:
+            $ref: '#/components/schemas/Hint'
+
+    Error:
+      type: object
+      properties:
+        code:
+          type: string
+          description: Код ошибки.
+        message:
+          type: string
+          description: Описание ошибки.
+
+    Hint:
+      type: object
+      properties:
+        message:
+          type: string
+          description: Подсказка.
+  # (те же схемы, что и ранее)
