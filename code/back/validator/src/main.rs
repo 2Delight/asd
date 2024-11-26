@@ -1,8 +1,8 @@
-use actix_web::{get, App, HttpResponse, HttpServer, Responder};
+use actix_web::{get, App, HttpResponse, HttpServer, Responder, Error};
 
 #[get("/")]
-async fn index() -> impl Responder {
-    HttpResponse::Ok().body("Hello, world!")
+async fn index() -> Result<impl Responder, Error> {
+    Ok(HttpResponse::Ok().body("Hello, world!"))
 }
 
 #[actix_web::main]
