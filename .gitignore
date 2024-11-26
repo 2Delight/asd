@@ -1,6 +1,9 @@
 # OS
 .DS_Store
 
+# Bin
+bin/
+target/
 
 # dependencies
 /vs-extension/node_modules
