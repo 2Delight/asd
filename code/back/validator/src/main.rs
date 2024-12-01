@@ -1,8 +1,8 @@
 use actix_web::{get, App, HttpResponse, HttpServer, Responder, Error};
 
-#[get("/")]
+#[get("/ping")]
 async fn index() -> Result<impl Responder, Error> {
-    Ok(HttpResponse::Ok().body("Hello, world!"))
+    Ok(HttpResponse::Ok().body("pong"))
 }
 
 #[actix_web::main]
