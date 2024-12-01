@@ -1,0 +1,4 @@
+database:
+  connectionString: "postgres://user:password@gateway-db:5432/banks?sslmode=disable"
+httPort: 8080
+grpcPort: 8081

@@ -1,0 +1,66 @@
+syntax = "proto3";
+
+package integrator;
+
+option go_package = "gateway-api/pkg/integrator";
+
+import "google/api/annotations.proto";
+import "google/protobuf/timestamp.proto";
+
+service WorkerService {
+  rpc SaveSpecification(SaveSpecificationRequest) returns (CommitPushResult) {
+    option (google.api.http) = {
+      post: "/worker/specifications/{id}/save"
+    };
+  }
+
+  rpc RunMLDev(RunMLDevRequest) returns (MLDevResult) {
+    option (google.api.http) = {
+      post: "/worker/specifications/{id}/run-mldev"
+    };
+  }
+
+  rpc GetSpecificationFromGit(GetSpecificationRequest) returns (Specification) {
+    option (google.api.http) = {
+      get: "/worker/specifications/{id}/get"
+    };
+  }
+}
+
+message Specification {
+  int64 id = 1;
+  string name = 2;
+  string content = 3; // YAML content
+  string git_path = 4;
+  string status = 5;
+  google.protobuf.Timestamp created_at = 6;
+  google.protobuf.Timestamp updated_at = 7;
+}
+
+message CommitPushResult {
+  string commit_hash = 1;
+  bool is_success = 2;
+}
+
+message MLDevResult {
+  bool is_success = 1;
+  repeated string artifacts = 2;
+}
+
+message GetSpecificationRequest {
+  int64 id = 1;
+}
+
+message SaveSpecificationRequest {
+  int64 id = 1;
+  Specification specification = 2;
+}
+
+message RunMLDevRequest {
+  int64 id = 1;
+  MLDevPath path = 2;
+}
+
+message MLDevPath {
+  string path = 1;
+}

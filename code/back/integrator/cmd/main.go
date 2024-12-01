@@ -1,51 +1,57 @@
-// main.go
-
 package main
 
 import (
 	"context"
-	"encoding/json"
-	"net/http"
-
-	"github.com/go-kit/kit/endpoint"
-	gokithttp "github.com/go-kit/kit/transport/http"
+	"fmt"
 	"log"
+	"net"
+
+	"github.com/grpc-ecosystem/grpc-gateway/v2/runtime"
+	"google.golang.org/grpc"
+	"google.golang.org/grpc/credentials/insecure"
+	"integrator-api/internal/app/integrator"
+	"integrator-api/internal/pkg/server"
+	pbintegrator "integrator-api/pkg/integrator"
 )
 
-// Define the request and response structures
-type helloRequest struct{}
-
-type helloResponse struct {
-	Message string `json:"message"`
-}
-
-// Create the endpoint
-func makeHelloEndpoint() endpoint.Endpoint {
-	return func(ctx context.Context, request interface{}) (interface{}, error) {
-		return helloResponse{Message: "Hello World from Go Kit!"}, nil
-	}
-}
-
-// Decode the request (no parameters needed)
-func decodeHelloRequest(_ context.Context, _ *http.Request) (interface{}, error) {
-	return helloRequest{}, nil
-}
-
-// Encode the response as JSON
-func encodeResponse(_ context.Context, w http.ResponseWriter, response interface{}) error {
-	return json.NewEncoder(w).Encode(response)
-}
+const (
+	httPort  = "8082"
+	grpcPort = "8083"
+)
 
 func main() {
-	// Create a handler for the endpoint
-	helloHandler := gokithttp.NewServer(
-		makeHelloEndpoint(),
-		decodeHelloRequest,
-		encodeResponse,
-	)
+	ctx := context.Background()
 
-	// Start the HTTP server
-	http.Handle("/hello", helloHandler)
-	log.Println("Server is running on port 8080...")
-	log.Fatal(http.ListenAndServe(":8080", nil))
+	listener, err := net.Listen("tcp", fmt.Sprintf("localhost:%s", grpcPort))
+	if err != nil {
+		log.Fatalf("error when listen grpc: %s", err.Error())
+	}
+	defer listener.Close()
+
+	grpcServer := grpc.NewServer()
+	integratorHandler := integrator.NewIntegratorHandler()
+	pbintegrator.RegisterWorkerServiceServer(grpcServer, integratorHandler)
+	go func() {
+		if err := grpcServer.Serve(listener); err != nil {
+			log.Fatalf("failed when serve: %s", err.Error())
+		}
+	}()
+
+	gatewayConn, err := grpc.NewClient(
+		listener.Addr().String(),
+		grpc.WithTransportCredentials(insecure.NewCredentials()),
+	)
+	if err != nil {
+		log.Fatalf("failed to connect: %s", err.Error())
+	}
+	defer gatewayConn.Close()
+
+	mux := runtime.NewServeMux()
+	if err = pbintegrator.RegisterWorkerServiceHandler(ctx, mux, gatewayConn); err != nil {
+		log.Fatalf("failed to register handler: %s", err.Error())
+	}
+
+	s := server.NewHTTPServer(mux, httPort)
+	log.Println("launched server at", httPort)
+	log.Fatal(s.Launch())
 }
