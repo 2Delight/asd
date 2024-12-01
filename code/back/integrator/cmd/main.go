@@ -16,8 +16,8 @@ import (
 )
 
 const (
-	httPort  = "8082"
-	grpcPort = "8083"
+	httPort  = "8080"
+	grpcPort = "8081"
 )
 
 func main() {
