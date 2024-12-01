@@ -6,13 +6,14 @@ import {useTranslation, Trans} from 'react-i18next'
 import FilterButton from "../../Components/FilterButton/FilterButton";
 import Editor, { DiffEditor, useMonaco, loader } from '@monaco-editor/react';
 import { SpecificationService } from './SpecificationService';
+import { REACT_APP_API_URL, REACT_APP_PORT } from "../../Constants"
 
 const UserScreen = () => {
     const { id } = useParams();
     const editorRef = useRef(null);
     const {t, i18n} = useTranslation();
     const [specification, setSpecification] = useState("");
-    const url = process.env.REACT_APP_API_URL + ":" + process.env.REACT_APP_PORT
+    const url = REACT_APP_API_URL + ":" + REACT_APP_PORT
     const specificationService = new SpecificationService(url);
     const [validationResult, setValidationResult] = useState(null);
 
