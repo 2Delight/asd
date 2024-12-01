@@ -181,6 +181,10 @@ jobs:
       - name: Update Tag
         run: |
           sed -i 's/TAG=.*/TAG=${{ github.sha }}/g' .env
+          sed -i 's/tag: .*/tag: ${{ github.sha }}/g' remote/charts/pingus/values.yaml
+
           git add .env
+          git add remote/charts/pingus/values.yaml
+
           git commit -m "Tag update: ${{ github.sha }}"
           git push
