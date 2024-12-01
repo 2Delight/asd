@@ -28,7 +28,7 @@ service WorkerService {
 
   rpc GetHello(GetHelloRequest) returns (GetHelloResponse) {
     option (google.api.http) = {
-      post: "/ping"
+      get: "/ping"
     };
   }
 }
