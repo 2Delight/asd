@@ -23,7 +23,7 @@ jobs:
         id: meta
         uses: docker/metadata-action@9ec57ed1fcdbf14dcef7dfbe97b2010124a938b7
         with:
-          images: allergano/validator
+          images: olegdayo/validator
 
       - name: Build and Push Validator
         uses: docker/build-push-action@3b5e8027fcad23fda98b2e3ac259d8d67585f671
@@ -50,7 +50,7 @@ jobs:
         id: meta
         uses: docker/metadata-action@9ec57ed1fcdbf14dcef7dfbe97b2010124a938b7
         with:
-          images: allergano/integrator
+          images: olegdayo/integrator
 
       - name: Build and Push Integrator
         uses: docker/build-push-action@3b5e8027fcad23fda98b2e3ac259d8d67585f671
@@ -58,5 +58,5 @@ jobs:
           context: .
           file: ./services/integrator/Dockerfile
           push: true
-          tags: allergano/integrator:${{ github.sha }}
+          tags: olegdayo/integrator:${{ github.sha }}
           labels: ${{ steps.meta.outputs.labels }}
