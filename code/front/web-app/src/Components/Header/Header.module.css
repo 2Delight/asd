@@ -1,0 +1,97 @@
+
+.header {
+    height: 100px;
+    background-color: #fff;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    opacity: 100%;
+}
+
+.linkLogo {
+    text-decoration: none;
+}
+
+.logo {
+    font-size: 36px;
+    font-weight: bold;
+    margin-right: 20px;
+    color: #70C58F;
+
+}
+
+@media (max-width: 767px) {
+    .header {
+        height: 60px;
+        background-color: transparent;
+    }
+    .logo {
+        font-size: 28px;
+    }
+    .text {
+        font-size: 12px;
+    }
+}
+
+.texts {
+    padding-top: 4px;
+    margin-right: 20px;
+}
+
+.text {
+    font-size: 16px;
+    color: #000000;
+    font-weight: bold;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.text:hover {
+    font-size: 18px;
+    color: #70C58F;
+    opacity: 100%;
+}
+
+.buttons {
+    margin-left: auto;
+    display: flex;
+    margin-right: 20px;
+}
+
+.button {
+    font-size: 16px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    padding: 8px 12px;
+    margin-left: 10px;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    outline: 1px solid #B1B1B1;
+}
+
+.button:hover {
+    outline: 2px solid #B1B1B1;
+    opacity: 80%;
+}
+
+.buttonActive {
+    font-size: 16px;
+    border: 1px solid #ddd;
+    padding: 8px 12px;
+    margin-left: 10px;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    outline: 2px solid #000000;
+    opacity: 100%;
+}
+
+@media (max-width: 767px) {
+    .button {
+        font-size: 12px;
+    }
+    .buttonActive {
+        font-size: 12px;
+    }
+}

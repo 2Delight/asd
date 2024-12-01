@@ -1,0 +1,52 @@
+.buttonBackground {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+    width: 400px;
+    padding: 12px;
+    border-radius: 10px;
+    border: 0 solid #900;
+    user-select: none;
+    background: #FFFFFF;
+    margin-top: 20px;
+    margin-left: 20px;
+    gap: 10px;
+    cursor: pointer;
+    transition: transform .3s;
+}
+
+.buttonBackground:hover {
+    transform: scale(1.05);
+}
+
+.buttonIcon {
+    width: 26px;
+    height: 26px;
+}
+
+.buttonTitle {
+    font-style: normal;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+    font-size: 1.0rem;
+    color: #000000;
+}
+
+@media (min-width: 1000px) {
+    .buttonBackground {
+        width: calc(100% / 3 - 40px);
+    }
+}
+
+@media (min-width: 768px) and (max-width: 999px) {
+    .buttonBackground {
+        width: calc(100% / 2 - 40px);
+    }
+}
+
+@media (max-width: 767px) {
+    .buttonBackground {
+        width: calc(100% - 40px);
+    }
+}

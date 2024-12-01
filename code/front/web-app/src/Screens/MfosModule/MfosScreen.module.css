@@ -1,0 +1,10 @@
+
+body,
+#background {
+    background-color: rgba(112, 197, 143, 0.1);
+}
+
+.filterButtonStack {
+    display: flex;
+    padding-bottom: 20px;
+}

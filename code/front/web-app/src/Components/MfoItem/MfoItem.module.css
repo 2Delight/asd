@@ -1,0 +1,92 @@
+.mfoCard {
+    display: flex;
+    flex-direction: column;
+    border: none;
+    background-color: #FFFFFF;
+    padding: 12px;
+    border-radius: 10px;
+    width: calc(100% / 3 - 30px);
+    box-sizing: border-box;
+    margin: 20px;
+    transition: transform .3s;
+}
+
+.mfoCard:hover {
+    transform: scale(1.05); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+}
+
+@media (min-width: 1000px) {
+    .mfoCard {
+        width: calc(100% / 3 - 40px);
+    }
+}
+
+@media (min-width: 768px) and (max-width: 999px) {
+    .mfoCard {
+        width: calc(100% / 2 - 40px);
+    }
+}
+
+@media (max-width: 767px) {
+    .mfoCard {
+        width: 100%;
+    }
+}
+
+.mfoAvatar {
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
+    user-select: none;
+}
+
+.mfoHeader {
+    display: flex;
+    align-items: center;
+}
+
+.mfoTexts {
+    padding-left: 13px;
+}
+
+.mfoTitle {
+    font-style: normal;
+    font-weight: bold;
+    font-size: 1.2rem;
+    color: #000;
+    padding-bottom: 4px;
+}
+
+.mfoSubtitle {
+    font-weight: normal;
+    font-size: 0.9rem;
+    color: #7D8A82;
+}
+
+.mfoCard ul {
+    padding: 0;
+    list-style-type: none;
+}
+
+.mfoCard li {
+    margin-left: 0;
+    display: flex;
+    justify-content: space-between; /* Равномерное распределение */
+    align-items: center;
+    font-weight: normal;
+    font-size: 0.9rem;
+    color: #B2C1B8;
+    padding-bottom: 15px;
+}
+
+.mfoFeatureTitle {
+    font-weight: normal;
+    font-size: 1.0rem;
+    color: #000000;
+}
+
+.mfoFeatureSubtitle {
+    font-weight: bold;
+    font-size: 1.0rem;
+    color: #000000;
+}
