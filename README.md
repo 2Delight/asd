@@ -104,6 +104,7 @@ grpcPort: 8083
 
 
 ## LLM Prompts
+LLM: ChatGPT o1-mini
 
 Создай Go-функции, которые используют библиотеку Squirrel для взаимодействия с базой данных. Функции должны быть гибкими и безопасными, принимая в качестве параметров имя таблицы, условия запроса и необходимые данные
 для выполнения операций. Обеспечь следующие требования:
@@ -135,7 +136,109 @@ grpcPort: 8083
 https://github.com/2Delight/mline/commit/88c529d5e10b095eaff7eebab3c4d4423d2ad147
 
 
+*“Создай файл Protocol Buffers (.proto) с синтаксисом proto3, пакетом gateway и опцией go_package равной "gateway-api/pkg/gateway". Импортируй файлы "google/api/annotations.proto" и "google/protobuf/timestamp.proto".
 
+Определи сервис GatewayService с следующими методами:
+1.	GetSpecification
+	Вход: GetSpecificationRequest
+	Выход: Specification
+	HTTP маршрут: GET "/gateway/specifications/{id}"
+
+2.	UpdateSpecification
+	Вход: UpdateSpecificationRequest
+	Выход: UpdateSpecificationResponse
+	HTTP маршрут: PUT "/gateway/specifications/{id}"
+
+3.	GetStatus
+	Вход: GetStatusRequest
+	Выход: Status
+	HTTP маршрут: GET "/gateway/specifications/{id}/status"
+
+4.	UpdateStatus
+	Вход: UpdateStatusRequest
+	Выход: StatusUpdateResponse
+	HTTP маршрут: POST "/gateway/specifications/{id}/status"
+
+5.	ValidateSpecification
+	Вход: ValidateSpecificationRequest
+	Выход: ValidationResult
+	HTTP маршрут: POST "/gateway/specifications/{id}/validate"
+
+6.	GetHello
+	Вход: GetHelloRequest
+	Выход: GetHelloResponse
+	HTTP маршрут: GET "/ping"
+
+Определи следующие сообщения:
+
+Specification
+int64 id = 1;
+string name = 2;
+string content = 3; // YAML content
+string git_path = 4;
+string status = 5;
+Timestamp created_at = 6;
+Timestamp updated_at = 7;
+
+CommitPushResult
+string commit_hash = 1;
+bool is_success = 2;
+
+MLDevResult
+bool is_success = 1;
+repeated string artifacts = 2;
+
+Status
+int64 id = 1;
+string name = 2; // “committed”, “completed”, etc.
+
+StatusUpdate
+string new_status = 1;
+
+StatusUpdateResponse
+bool is_success = 1;
+
+ValidationResult
+bool is_valid = 1;
+repeated Error errors = 2;
+repeated Hint hints = 3;
+
+Error
+string code = 1;
+string message = 2;
+
+Hint
+string message = 1;
+
+GetSpecificationRequest
+int64 id = 1;
+
+UpdateSpecificationRequest
+int64 id = 1;
+string specification_content = 2;
+
+UpdateSpecificationResponse
+bool is_success = 1;
+
+GetStatusRequest
+int64 id = 1;
+
+UpdateStatusRequest
+int64 id = 1;
+StatusUpdate status_update = 2;
+
+ValidateSpecificationRequest
+int64 id = 1;
+string specification_content = 2;
+
+GetHelloRequest {}
+
+GetHelloResponse
+string pong = 1;
+
+<img width="933" alt="Screenshot 2024-12-01 at 22 01 25" src="https://github.com/user-attachments/assets/e1cd5831-87a9-4d65-ab1b-ab9b162337df">
+<img width="933" alt="Screenshot 2024-12-01 at 22 01 41" src="https://github.com/user-attachments/assets/e9da5d5f-a65d-4e12-80e2-e87833517e2c">
+<img width="933" alt="Screenshot 2024-12-01 at 22 01 56" src="https://github.com/user-attachments/assets/f831acd4-d074-491e-9f91-346939a07726">
 
 
 
