@@ -13,6 +13,7 @@ import (
 	"gateway-api/internal/pkg/server"
 	"gateway-api/internal/pkg/services/specification"
 	pbgateway "gateway-api/pkg/gateway"
+
 	"github.com/grpc-ecosystem/grpc-gateway/v2/runtime"
 	"github.com/jackc/pgx/v4/pgxpool"
 	"google.golang.org/grpc"
@@ -32,7 +33,7 @@ const (
 func main() {
 	ctx := context.Background()
 
-	listener, err := net.Listen("tcp", fmt.Sprintf("localhost:%s", grpcPort))
+	listener, err := net.Listen("tcp", fmt.Sprintf(":%s", grpcPort))
 	if err != nil {
 		log.Fatalf("error when listen grpc: %s", err.Error())
 	}

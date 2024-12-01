@@ -6,12 +6,13 @@ import (
 	"log"
 	"net"
 
-	"github.com/grpc-ecosystem/grpc-gateway/v2/runtime"
-	"google.golang.org/grpc"
-	"google.golang.org/grpc/credentials/insecure"
 	"integrator-api/internal/app/integrator"
 	"integrator-api/internal/pkg/server"
 	pbintegrator "integrator-api/pkg/integrator"
+
+	"github.com/grpc-ecosystem/grpc-gateway/v2/runtime"
+	"google.golang.org/grpc"
+	"google.golang.org/grpc/credentials/insecure"
 )
 
 const (
@@ -22,7 +23,7 @@ const (
 func main() {
 	ctx := context.Background()
 
-	listener, err := net.Listen("tcp", fmt.Sprintf("localhost:%s", grpcPort))
+	listener, err := net.Listen("tcp", fmt.Sprintf(":%s", grpcPort))
 	if err != nil {
 		log.Fatalf("error when listen grpc: %s", err.Error())
 	}
