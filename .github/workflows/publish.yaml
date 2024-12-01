@@ -17,13 +17,13 @@ jobs:
         uses: docker/login-action@f4ef78c080cd8ba55a85445d5b36e214a81df20a
         with:
           username: ${{ secrets.DOCKER_USERNAME }}
-          password: ${{ secrets.DOCKER_PASSWORD }}
+          password: ${{ secrets.DOCKER_TOKEN }}
 
       - name: Extract Validator Metadata
         id: meta
         uses: docker/metadata-action@9ec57ed1fcdbf14dcef7dfbe97b2010124a938b7
         with:
-          images: olegdayo/validator
+          images: ${{ secrets.DOCKER_USERNAME }}/validator
 
       - name: Build and Push Validator
         uses: docker/build-push-action@3b5e8027fcad23fda98b2e3ac259d8d67585f671
@@ -31,7 +31,7 @@ jobs:
           context: .
           file: ./code/back/validator/Dockerfile
           push: true
-          tags: olegdayo/validator:${{ github.sha }}
+          tags: ${{ secrets.DOCKER_USERNAME }}/validator:${{ github.sha }}
           labels: ${{ steps.meta.outputs.labels }}
 
   integrator:
@@ -44,13 +44,13 @@ jobs:
         uses: docker/login-action@f4ef78c080cd8ba55a85445d5b36e214a81df20a
         with:
           username: ${{ secrets.DOCKER_USERNAME }}
-          password: ${{ secrets.DOCKER_PASSWORD }}
+          password: ${{ secrets.DOCKER_TOKEN }}
 
       - name: Extract Integrator Metadata
         id: meta
         uses: docker/metadata-action@9ec57ed1fcdbf14dcef7dfbe97b2010124a938b7
         with:
-          images: olegdayo/integrator
+          images: ${{ secrets.DOCKER_USERNAME }}/integrator
 
       - name: Build and Push Integrator
         uses: docker/build-push-action@3b5e8027fcad23fda98b2e3ac259d8d67585f671
@@ -58,5 +58,5 @@ jobs:
           context: .
           file: ./services/integrator/Dockerfile
           push: true
-          tags: olegdayo/integrator:${{ github.sha }}
+          tags: ${{ secrets.DOCKER_USERNAME }}/integrator:${{ github.sha }}
           labels: ${{ steps.meta.outputs.labels }}
