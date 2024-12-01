@@ -86,3 +86,19 @@ For maintainers debug logging and tracing must be provided. For users, container
 ### Draft
 
 ![Architecture](diagrams/draft-architecture.drawio.svg)
+
+## Integration
+
+### gateway-api
+
+httpPort: 8080
+grpcPort: 8082
+databaseConnectionString: "postgres://user:password@gateway-db:5432/specifications?sslmode=disable"
+
+gateway-api ходит по grpc integrator-api
+
+### integrator-api
+
+httPort: 8082
+grpcPort: 8083
+
