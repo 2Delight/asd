@@ -29,6 +29,8 @@ target/
 # misc
 .DS_Store
 *.pem
+/.idea
+/vendor-proto
 
 # debug
 /web-app/npm-debug.log*
@@ -44,3 +46,4 @@ target/
 # typescript
 /web-app/*.tsbuildinfo
 /web-app/next-env.d.ts
+

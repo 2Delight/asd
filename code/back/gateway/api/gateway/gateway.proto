@@ -1,0 +1,115 @@
+syntax = 'proto3';
+
+package gateway;
+
+option go_package = "gateway-api/pkg/gateway";
+
+import "google/api/annotations.proto";
+import "google/protobuf/timestamp.proto";
+
+service GatewayService {
+  rpc GetSpecification(GetSpecificationRequest) returns (Specification) {
+    option (google.api.http) = {
+      get: "/gateway/specifications/{id}"
+    };
+  }
+
+  rpc UpdateSpecification(UpdateSpecificationRequest) returns (UpdateSpecificationResponse) {
+    option (google.api.http) = {
+      put: "/gateway/specifications/{id}"
+    };
+  }
+
+  rpc GetStatus(GetStatusRequest) returns (Status) {
+    option (google.api.http) = {
+      get: "/gateway/specifications/{id}/status"
+    };
+  }
+
+  rpc UpdateStatus(UpdateStatusRequest) returns (StatusUpdateResponse) {
+    option (google.api.http) = {
+      post: "/gateway/specifications/{id}/status"
+    };
+  }
+
+  rpc ValidateSpecification(ValidateSpecificationRequest) returns (ValidationResult) {
+    option (google.api.http) = {
+      post: "/gateway/specifications/{id}/validate"
+    };
+  }
+}
+
+message Specification {
+  int64 id = 1;
+  string name = 2;
+  string content = 3; // YAML content
+  string git_path = 4;
+  string status = 5;
+  google.protobuf.Timestamp created_at = 6;
+  google.protobuf.Timestamp updated_at = 7;
+}
+
+message CommitPushResult {
+  string commit_hash = 1;
+  bool is_success = 2;
+}
+
+message MLDevResult {
+  bool is_success = 1;
+  repeated string artifacts = 2;
+}
+
+message Status {
+  int64 id = 1;
+  string name = 2; // "committed", "completed", etc.
+}
+
+message StatusUpdate {
+  string new_status = 1;
+}
+
+message StatusUpdateResponse {
+  bool is_success = 1;
+}
+
+message ValidationResult {
+  bool is_valid = 1;
+  repeated Error errors = 2;
+  repeated Hint hints = 3;
+}
+
+message Error {
+  string code = 1;
+  string message = 2;
+}
+
+message Hint {
+  string message = 1;
+}
+
+message GetSpecificationRequest {
+  int64 id = 1;
+}
+
+message UpdateSpecificationRequest {
+  int64 id = 1;
+  string specification_content = 2;
+}
+
+message UpdateSpecificationResponse {
+  bool is_success = 1;
+}
+
+message GetStatusRequest {
+  int64 id = 1;
+}
+
+message UpdateStatusRequest {
+  int64 id = 1;
+  StatusUpdate status_update = 2;
+}
+
+message ValidateSpecificationRequest {
+  int64 id = 1;
+  string specification_content = 2;
+}
