@@ -4,9 +4,9 @@ import (
 	"context"
 	"gateway-api/internal/pkg/database/schema"
 	sq "github.com/Masterminds/squirrel"
-	"github.com/georgysavva/scany/pgxscan"
-	"github.com/jackc/pgx/v4"
-	"github.com/jackc/pgx/v4/pgxpool"
+	"github.com/georgysavva/scany/v2/pgxscan"
+	"github.com/jackc/pgx/v5"
+	"github.com/jackc/pgx/v5/pgxpool"
 	"github.com/pkg/errors"
 	"time"
 )

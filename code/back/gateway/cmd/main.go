@@ -2,10 +2,8 @@ package main
 
 import (
 	"context"
+	"database/sql"
 	"fmt"
-	"log"
-	"net"
-
 	"gateway-api/internal/app/gateway"
 	"gateway-api/internal/pkg/clients/integrator"
 	"gateway-api/internal/pkg/clients/validator"
@@ -13,9 +11,15 @@ import (
 	"gateway-api/internal/pkg/server"
 	"gateway-api/internal/pkg/services/specification"
 	pbgateway "gateway-api/pkg/gateway"
+	"github.com/golang-migrate/migrate/v4"
+	"github.com/golang-migrate/migrate/v4/database/postgres"
+	_ "github.com/golang-migrate/migrate/v4/source/file"
+	"github.com/jackc/pgx/v5/stdlib"
+	"log"
+	"net"
 
 	"github.com/grpc-ecosystem/grpc-gateway/v2/runtime"
-	"github.com/jackc/pgx/v4/pgxpool"
+	"github.com/jackc/pgx/v5/pgxpool"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials/insecure"
 )
@@ -23,14 +27,23 @@ import (
 const (
 	databaseConnStr = "postgres://user:password@gateway-db:5432/specifications?sslmode=disable"
 
-	integratorConnStr = "integrator:8083"
-	validatorConnStr  = "validator:8085"
+	integratorConnStr = "integrator:8081"
+	validatorConnStr  = "validator:8081"
 
 	httPort  = "8080"
 	grpcPort = "8081"
 )
 
+type Driver = string
+
+const (
+	// PGDriver ...
+	PGDriver Driver = "postgres"
+)
+
 func main() {
+	log.Println("start app")
+
 	ctx := context.Background()
 
 	listener, err := net.Listen("tcp", fmt.Sprintf(":%s", grpcPort))
@@ -39,13 +52,21 @@ func main() {
 	}
 	defer listener.Close()
 
-	pool, err := pgxpool.Connect(ctx, databaseConnStr)
+	pool, err := pgxpool.New(ctx, databaseConnStr)
 	if err != nil {
 		log.Fatalf("connect to db: %s", err.Error())
 	}
 	defer pool.Close()
 
 	specRepo := database.NewSpecRepository(pool)
+
+	db := stdlib.OpenDB(*pool.Config().ConnConfig)
+	defer db.Close()
+
+	migrationsPath := "file:///app/migrations"
+	if err := MigrateDB(db, migrationsPath, PGDriver); err != nil {
+		log.Fatalf("cant migrate: %s", err.Error())
+	}
 
 	integratorConn, err := grpc.Dial(integratorConnStr, grpc.WithTransportCredentials(insecure.NewCredentials()))
 	if err != nil {
@@ -89,4 +110,31 @@ func main() {
 	s := server.NewHTTPServer(mux, httPort)
 	log.Println("launched server at", httPort)
 	log.Fatal(s.Launch())
+}
+
+func MigrateDB(database *sql.DB, migrationsPath string, driver Driver) error {
+	db, err := postgres.WithInstance(database, &postgres.Config{})
+	if err != nil {
+		return fmt.Errorf("failed to create postgres driver: %+v", err)
+	}
+
+	m, err := migrate.NewWithDatabaseInstance(
+		migrationsPath,
+		driver,
+		db,
+	)
+	if err != nil {
+		return fmt.Errorf("failed to create migration instance: %+v", err)
+	}
+
+	err = m.Up()
+	if err != nil {
+		if err == migrate.ErrNoChange {
+			log.Printf("Migration did not change DB")
+			return nil
+		}
+		return fmt.Errorf("failed to migrate: %+v", err)
+	}
+
+	return nil
 }

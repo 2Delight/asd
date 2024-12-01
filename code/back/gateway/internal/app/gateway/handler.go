@@ -40,6 +40,10 @@ func (g *GatewayHandler) GetSpecification(ctx context.Context, req *pbgateway.Ge
 		return nil, status.Errorf(codes.Internal, err.Error())
 	}
 
+	if spec == nil {
+		return &pbgateway.Specification{}, nil
+	}
+
 	return &pbgateway.Specification{
 		Id:        spec.Id,
 		Name:      spec.Name,
@@ -76,6 +80,10 @@ func (g *GatewayHandler) GetStatus(ctx context.Context, req *pbgateway.GetStatus
 		return nil, status.Errorf(codes.Internal, err.Error())
 	}
 
+	if stat == nil {
+		return &pbgateway.Status{}, nil
+	}
+
 	return &pbgateway.Status{
 		Id:   stat.ID,
 		Name: stat.Name,
@@ -98,10 +106,6 @@ func (g *GatewayHandler) UpdateStatus(ctx context.Context, req *pbgateway.Update
 }
 
 func (g *GatewayHandler) ValidateSpecification(ctx context.Context, req *pbgateway.ValidateSpecificationRequest) (*pbgateway.ValidationResult, error) {
-	if req.GetId() <= 0 || req.GetSpecificationContent() == "" {
-		return nil, status.Errorf(codes.InvalidArgument, "invalid id/content")
-	}
-
 	result, err := g.specService.ValidateSpecification(ctx, req.GetId(), req.GetSpecificationContent())
 	if err != nil {
 		return nil, status.Errorf(codes.Internal, err.Error())

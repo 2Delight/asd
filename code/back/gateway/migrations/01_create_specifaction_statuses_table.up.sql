@@ -8,7 +8,3 @@ CREATE TABLE specifications (
     created_at TIMESTAMP DEFAULT NOW(),  -- Время создания записи
     updated_at TIMESTAMP DEFAULT NOW()   -- Время последнего обновления записи
 );
-
--- +goose Down
--- Удаление таблицы `specifications`
-DROP TABLE IF EXISTS specifications;

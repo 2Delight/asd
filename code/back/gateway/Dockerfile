@@ -6,5 +6,7 @@ RUN go build -ldflags "-s -w" -o ./bin/gateway ./cmd
 
 FROM alpine:latest AS runner
 WORKDIR /app
-COPY --from=builder /app/bin/gateway .
+COPY --from=builder /app/bin/gateway ./gateway
+COPY --from=builder /app/migrations ./migrations
+
 CMD ["./gateway"]

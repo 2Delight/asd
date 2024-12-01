@@ -37,24 +37,14 @@ func NewService(integrator IntegratorClient, validator ValidatorClient, repo rep
 }
 
 func (s *SpecService) GetSpecification(ctx context.Context, id int64) (*model.Specification, error) {
-	schemaSpec, err := s.repo.GetSpecificationByID(ctx, id)
-	if err != nil {
-		return nil, err
-	}
-
 	gitSpec, err := s.integrator.GetSpecificationFromGit(ctx, id)
 	if err != nil {
 		return nil, err
 	}
 
 	return &model.Specification{
-		Id:        schemaSpec.Id,
-		Name:      schemaSpec.Name,
-		Content:   gitSpec.Content,
-		GitPath:   schemaSpec.GitPath,
-		Status:    schemaSpec.Status,
-		CreatedAt: schemaSpec.CreatedAt,
-		UpdatedAt: schemaSpec.UpdatedAt,
+		Id:      gitSpec.Id,
+		Content: gitSpec.Content,
 	}, nil
 }
 
@@ -62,6 +52,10 @@ func (s *SpecService) UpdateSpecification(ctx context.Context, id int64, updated
 	schemaSpec, err := s.repo.GetSpecificationByID(ctx, id)
 	if err != nil {
 		return false, err
+	}
+
+	if schemaSpec == nil {
+		return false, nil
 	}
 
 	var (
@@ -93,6 +87,10 @@ func (s *SpecService) GetStatus(ctx context.Context, id int64) (*model.Status, e
 	schemaSpec, err := s.repo.GetSpecificationByID(ctx, id)
 	if err != nil {
 		return nil, err
+	}
+
+	if schemaSpec == nil {
+		return nil, nil
 	}
 
 	return &model.Status{
