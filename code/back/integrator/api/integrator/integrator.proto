@@ -25,6 +25,12 @@ service WorkerService {
       get: "/worker/specifications/{id}/get"
     };
   }
+
+  rpc GetHello(GetHelloRequest) returns (GetHelloResponse) {
+    option (google.api.http) = {
+      post: "/ping"
+    };
+  }
 }
 
 message Specification {
@@ -63,4 +69,10 @@ message RunMLDevRequest {
 
 message MLDevPath {
   string path = 1;
+}
+
+message GetHelloRequest {}
+
+message GetHelloResponse {
+  string pong = 1;
 }

@@ -47,6 +47,10 @@ func (h *IntegratorHandler) GetSpecificationFromGit(ctx context.Context, req *pb
 	}, nil
 }
 
+func (g *IntegratorHandler) GetHello(context.Context, *pbintegrator.GetHelloRequest) (*pbintegrator.GetHelloResponse, error) {
+	return &pbintegrator.GetHelloResponse{Pong: "fek"}, nil
+}
+
 func GenerateRandomHash() string {
 	// Инициализируем генератор случайных чисел
 	rand.Seed(time.Now().UnixNano())

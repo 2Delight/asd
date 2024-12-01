@@ -126,3 +126,7 @@ func (g *GatewayHandler) ValidateSpecification(ctx context.Context, req *pbgatew
 
 	return resp, nil
 }
+
+func (g *GatewayHandler) GetHello(context.Context, *pbgateway.GetHelloRequest) (*pbgateway.GetHelloResponse, error) {
+	return &pbgateway.GetHelloResponse{Pong: "kek"}, nil
+}

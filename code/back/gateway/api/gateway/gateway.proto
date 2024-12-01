@@ -37,6 +37,12 @@ service GatewayService {
       post: "/gateway/specifications/{id}/validate"
     };
   }
+
+  rpc GetHello(GetHelloRequest) returns (GetHelloResponse) {
+    option (google.api.http) = {
+      post: "/ping"
+    };
+  }
 }
 
 message Specification {
@@ -112,4 +118,10 @@ message UpdateStatusRequest {
 message ValidateSpecificationRequest {
   int64 id = 1;
   string specification_content = 2;
+}
+
+message GetHelloRequest {}
+
+message GetHelloResponse {
+  string pong = 1;
 }

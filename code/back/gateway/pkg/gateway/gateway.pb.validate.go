@@ -1743,3 +1743,205 @@ var _ interface {
 	Cause() error
 	ErrorName() string
 } = ValidateSpecificationRequestValidationError{}
+
+// Validate checks the field values on GetHelloRequest with the rules defined
+// in the proto definition for this message. If any rules are violated, the
+// first error encountered is returned, or nil if there are no violations.
+func (m *GetHelloRequest) Validate() error {
+	return m.validate(false)
+}
+
+// ValidateAll checks the field values on GetHelloRequest with the rules
+// defined in the proto definition for this message. If any rules are
+// violated, the result is a list of violation errors wrapped in
+// GetHelloRequestMultiError, or nil if none found.
+func (m *GetHelloRequest) ValidateAll() error {
+	return m.validate(true)
+}
+
+func (m *GetHelloRequest) validate(all bool) error {
+	if m == nil {
+		return nil
+	}
+
+	var errors []error
+
+	if len(errors) > 0 {
+		return GetHelloRequestMultiError(errors)
+	}
+
+	return nil
+}
+
+// GetHelloRequestMultiError is an error wrapping multiple validation errors
+// returned by GetHelloRequest.ValidateAll() if the designated constraints
+// aren't met.
+type GetHelloRequestMultiError []error
+
+// Error returns a concatenation of all the error messages it wraps.
+func (m GetHelloRequestMultiError) Error() string {
+	var msgs []string
+	for _, err := range m {
+		msgs = append(msgs, err.Error())
+	}
+	return strings.Join(msgs, "; ")
+}
+
+// AllErrors returns a list of validation violation errors.
+func (m GetHelloRequestMultiError) AllErrors() []error { return m }
+
+// GetHelloRequestValidationError is the validation error returned by
+// GetHelloRequest.Validate if the designated constraints aren't met.
+type GetHelloRequestValidationError struct {
+	field  string
+	reason string
+	cause  error
+	key    bool
+}
+
+// Field function returns field value.
+func (e GetHelloRequestValidationError) Field() string { return e.field }
+
+// Reason function returns reason value.
+func (e GetHelloRequestValidationError) Reason() string { return e.reason }
+
+// Cause function returns cause value.
+func (e GetHelloRequestValidationError) Cause() error { return e.cause }
+
+// Key function returns key value.
+func (e GetHelloRequestValidationError) Key() bool { return e.key }
+
+// ErrorName returns error name.
+func (e GetHelloRequestValidationError) ErrorName() string { return "GetHelloRequestValidationError" }
+
+// Error satisfies the builtin error interface
+func (e GetHelloRequestValidationError) Error() string {
+	cause := ""
+	if e.cause != nil {
+		cause = fmt.Sprintf(" | caused by: %v", e.cause)
+	}
+
+	key := ""
+	if e.key {
+		key = "key for "
+	}
+
+	return fmt.Sprintf(
+		"invalid %sGetHelloRequest.%s: %s%s",
+		key,
+		e.field,
+		e.reason,
+		cause)
+}
+
+var _ error = GetHelloRequestValidationError{}
+
+var _ interface {
+	Field() string
+	Reason() string
+	Key() bool
+	Cause() error
+	ErrorName() string
+} = GetHelloRequestValidationError{}
+
+// Validate checks the field values on GetHelloResponse with the rules defined
+// in the proto definition for this message. If any rules are violated, the
+// first error encountered is returned, or nil if there are no violations.
+func (m *GetHelloResponse) Validate() error {
+	return m.validate(false)
+}
+
+// ValidateAll checks the field values on GetHelloResponse with the rules
+// defined in the proto definition for this message. If any rules are
+// violated, the result is a list of violation errors wrapped in
+// GetHelloResponseMultiError, or nil if none found.
+func (m *GetHelloResponse) ValidateAll() error {
+	return m.validate(true)
+}
+
+func (m *GetHelloResponse) validate(all bool) error {
+	if m == nil {
+		return nil
+	}
+
+	var errors []error
+
+	// no validation rules for Pong
+
+	if len(errors) > 0 {
+		return GetHelloResponseMultiError(errors)
+	}
+
+	return nil
+}
+
+// GetHelloResponseMultiError is an error wrapping multiple validation errors
+// returned by GetHelloResponse.ValidateAll() if the designated constraints
+// aren't met.
+type GetHelloResponseMultiError []error
+
+// Error returns a concatenation of all the error messages it wraps.
+func (m GetHelloResponseMultiError) Error() string {
+	var msgs []string
+	for _, err := range m {
+		msgs = append(msgs, err.Error())
+	}
+	return strings.Join(msgs, "; ")
+}
+
+// AllErrors returns a list of validation violation errors.
+func (m GetHelloResponseMultiError) AllErrors() []error { return m }
+
+// GetHelloResponseValidationError is the validation error returned by
+// GetHelloResponse.Validate if the designated constraints aren't met.
+type GetHelloResponseValidationError struct {
+	field  string
+	reason string
+	cause  error
+	key    bool
+}
+
+// Field function returns field value.
+func (e GetHelloResponseValidationError) Field() string { return e.field }
+
+// Reason function returns reason value.
+func (e GetHelloResponseValidationError) Reason() string { return e.reason }
+
+// Cause function returns cause value.
+func (e GetHelloResponseValidationError) Cause() error { return e.cause }
+
+// Key function returns key value.
+func (e GetHelloResponseValidationError) Key() bool { return e.key }
+
+// ErrorName returns error name.
+func (e GetHelloResponseValidationError) ErrorName() string { return "GetHelloResponseValidationError" }
+
+// Error satisfies the builtin error interface
+func (e GetHelloResponseValidationError) Error() string {
+	cause := ""
+	if e.cause != nil {
+		cause = fmt.Sprintf(" | caused by: %v", e.cause)
+	}
+
+	key := ""
+	if e.key {
+		key = "key for "
+	}
+
+	return fmt.Sprintf(
+		"invalid %sGetHelloResponse.%s: %s%s",
+		key,
+		e.field,
+		e.reason,
+		cause)
+}
+
+var _ error = GetHelloResponseValidationError{}
+
+var _ interface {
+	Field() string
+	Reason() string
+	Key() bool
+	Cause() error
+	ErrorName() string
+} = GetHelloResponseValidationError{}

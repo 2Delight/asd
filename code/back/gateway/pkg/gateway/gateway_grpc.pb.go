@@ -24,6 +24,7 @@ const (
 	GatewayService_GetStatus_FullMethodName             = "/gateway.GatewayService/GetStatus"
 	GatewayService_UpdateStatus_FullMethodName          = "/gateway.GatewayService/UpdateStatus"
 	GatewayService_ValidateSpecification_FullMethodName = "/gateway.GatewayService/ValidateSpecification"
+	GatewayService_GetHello_FullMethodName              = "/gateway.GatewayService/GetHello"
 )
 
 // GatewayServiceClient is the client API for GatewayService service.
@@ -35,6 +36,7 @@ type GatewayServiceClient interface {
 	GetStatus(ctx context.Context, in *GetStatusRequest, opts ...grpc.CallOption) (*Status, error)
 	UpdateStatus(ctx context.Context, in *UpdateStatusRequest, opts ...grpc.CallOption) (*StatusUpdateResponse, error)
 	ValidateSpecification(ctx context.Context, in *ValidateSpecificationRequest, opts ...grpc.CallOption) (*ValidationResult, error)
+	GetHello(ctx context.Context, in *GetHelloRequest, opts ...grpc.CallOption) (*GetHelloResponse, error)
 }
 
 type gatewayServiceClient struct {
@@ -95,6 +97,16 @@ func (c *gatewayServiceClient) ValidateSpecification(ctx context.Context, in *Va
 	return out, nil
 }
 
+func (c *gatewayServiceClient) GetHello(ctx context.Context, in *GetHelloRequest, opts ...grpc.CallOption) (*GetHelloResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(GetHelloResponse)
+	err := c.cc.Invoke(ctx, GatewayService_GetHello_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // GatewayServiceServer is the server API for GatewayService service.
 // All implementations must embed UnimplementedGatewayServiceServer
 // for forward compatibility.
@@ -104,6 +116,7 @@ type GatewayServiceServer interface {
 	GetStatus(context.Context, *GetStatusRequest) (*Status, error)
 	UpdateStatus(context.Context, *UpdateStatusRequest) (*StatusUpdateResponse, error)
 	ValidateSpecification(context.Context, *ValidateSpecificationRequest) (*ValidationResult, error)
+	GetHello(context.Context, *GetHelloRequest) (*GetHelloResponse, error)
 	mustEmbedUnimplementedGatewayServiceServer()
 }
 
@@ -128,6 +141,9 @@ func (UnimplementedGatewayServiceServer) UpdateStatus(context.Context, *UpdateSt
 }
 func (UnimplementedGatewayServiceServer) ValidateSpecification(context.Context, *ValidateSpecificationRequest) (*ValidationResult, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ValidateSpecification not implemented")
+}
+func (UnimplementedGatewayServiceServer) GetHello(context.Context, *GetHelloRequest) (*GetHelloResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetHello not implemented")
 }
 func (UnimplementedGatewayServiceServer) mustEmbedUnimplementedGatewayServiceServer() {}
 func (UnimplementedGatewayServiceServer) testEmbeddedByValue()                        {}
@@ -240,6 +256,24 @@ func _GatewayService_ValidateSpecification_Handler(srv interface{}, ctx context.
 	return interceptor(ctx, in, info, handler)
 }
 
+func _GatewayService_GetHello_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetHelloRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(GatewayServiceServer).GetHello(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: GatewayService_GetHello_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(GatewayServiceServer).GetHello(ctx, req.(*GetHelloRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // GatewayService_ServiceDesc is the grpc.ServiceDesc for GatewayService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -266,6 +300,10 @@ var GatewayService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "ValidateSpecification",
 			Handler:    _GatewayService_ValidateSpecification_Handler,
+		},
+		{
+			MethodName: "GetHello",
+			Handler:    _GatewayService_GetHello_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
