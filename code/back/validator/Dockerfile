@@ -1,11 +1,10 @@
-FROM rust:latest AS builder
+FROM golang:alpine AS builder
 WORKDIR /app
 COPY . .
-RUN apt update && apt install musl-tools -y
-RUN rustup target add x86_64-unknown-linux-musl
-RUN cargo build --release --target x86_64-unknown-linux-musl
+RUN apk add --no-cache make
+RUN go build -ldflags "-s -w" -o ./bin/integrator ./cmd
 
-FROM --platform=linux/amd64 alpine:latest AS runner
+FROM alpine:latest AS runner
 WORKDIR /app
-COPY --from=builder /app/target/x86_64-unknown-linux-musl/release/validator .
-CMD ["./validator"]
+COPY --from=builder /app/bin/integrator .
+CMD ["./integrator"]

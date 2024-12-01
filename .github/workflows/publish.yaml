@@ -67,6 +67,36 @@ jobs:
           tags: ${{ secrets.DOCKER_USERNAME }}/integrator:${{ github.sha }}
           labels: ${{ steps.meta.outputs.labels }}
 
+  pingus:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check Out
+        uses: actions/checkout@v4
+
+      - name: Log in Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_TOKEN }}
+
+      - name: Set up Docker BuildX
+        uses: docker/setup-buildx-action@v3
+      
+      - name: Extract Pingus Metadata
+        id: meta
+        uses: docker/metadata-action@v5
+        with:
+          images: ${{ secrets.DOCKER_USERNAME }}/pingus
+
+      - name: Build and Push Pingus
+        uses: docker/build-push-action@v6
+        with:
+          context: ./code/back/pingus
+          file: ./code/back/pingus/Dockerfile
+          push: true
+          tags: ${{ secrets.DOCKER_USERNAME }}/pingus:${{ github.sha }}
+          labels: ${{ steps.meta.outputs.labels }}
+
   validator:
     runs-on: ubuntu-latest
     steps:
@@ -112,13 +142,13 @@ jobs:
       - name: Set up Docker BuildX
         uses: docker/setup-buildx-action@v3
       
-      - name: Extract WebApp Metadata
+      - name: Extract Web-App Metadata
         id: meta
         uses: docker/metadata-action@v5
         with:
           images: ${{ secrets.DOCKER_USERNAME }}/web-app
 
-      - name: Build and Push WebApp
+      - name: Build and Push Web-App
         uses: docker/build-push-action@v6
         with:
           context: ./code/front/web-app
@@ -132,6 +162,7 @@ jobs:
     needs:
       - gateway
       - integrator
+      - pingus
       - validator
       - web-app
     steps:
