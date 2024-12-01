@@ -6,5 +6,5 @@ FROM node:${NODE_VERSION}-alpine${ALPINE_VERSION} AS builder
 WORKDIR /app
 
 COPY . .
-
+RUN npm install
 CMD ["npm", "start", "--host", "0.0.0.0"]
