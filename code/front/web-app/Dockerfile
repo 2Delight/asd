@@ -8,5 +8,5 @@ WORKDIR /app
 
 COPY . .
 
-RUN yarn
+RUN npm
 CMD ["npm", "start", "--host", "0.0.0.0"]
