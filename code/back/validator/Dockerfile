@@ -3,7 +3,6 @@ WORKDIR /app
 COPY . .
 RUN apt update && apt install musl-tools -y
 RUN rustup target add x86_64-unknown-linux-musl
-RUN ls
 RUN cargo build --release --target x86_64-unknown-linux-musl
 
 FROM --platform=linux/amd64 alpine:latest AS runner
