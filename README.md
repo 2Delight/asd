@@ -106,6 +106,7 @@ grpcPort: 8083
 ## LLM Prompts
 LLM: ChatGPT o1-mini
 
+```
 Создай Go-функции, которые используют библиотеку Squirrel для взаимодействия с базой данных. Функции должны быть гибкими и безопасными, принимая в качестве параметров имя таблицы, условия запроса и необходимые данные
 для выполнения операций. Обеспечь следующие требования:
 
@@ -130,13 +131,15 @@ LLM: ChatGPT o1-mini
     Параметры: ctx context.Context, tableName string, id []int64
     Описание: Получает записи из указанной таблицы по ID, выбирая поля id, status.
     Возвращаемые значения: слайс ссылок на model.Specification
+```
     
 <img width="933" alt="Screenshot 2024-12-01 at 21 49 27" src="https://github.com/user-attachments/assets/4e0c8449-c8cc-4aa5-ae2f-6b21e45f0375">
 <img width="933" alt="Screenshot 2024-12-01 at 21 49 40" src="https://github.com/user-attachments/assets/607f6b1f-2d29-4e88-aaf1-499c5f1394ad">
 https://github.com/2Delight/mline/commit/88c529d5e10b095eaff7eebab3c4d4423d2ad147
 
 
-*“Создай файл Protocol Buffers (.proto) с синтаксисом proto3, пакетом gateway и опцией go_package равной "gateway-api/pkg/gateway". Импортируй файлы "google/api/annotations.proto" и "google/protobuf/timestamp.proto".
+```
+“Создай файл Protocol Buffers (.proto) с синтаксисом proto3, пакетом gateway и опцией go_package равной "gateway-api/pkg/gateway". Импортируй файлы "google/api/annotations.proto" и "google/protobuf/timestamp.proto".
 
 Определи сервис GatewayService с следующими методами:
 1.	GetSpecification
@@ -235,6 +238,7 @@ GetHelloRequest {}
 
 GetHelloResponse
 string pong = 1;
+```
 
 <img width="933" alt="Screenshot 2024-12-01 at 22 01 25" src="https://github.com/user-attachments/assets/e1cd5831-87a9-4d65-ab1b-ab9b162337df">
 <img width="933" alt="Screenshot 2024-12-01 at 22 01 41" src="https://github.com/user-attachments/assets/e9da5d5f-a65d-4e12-80e2-e87833517e2c">
