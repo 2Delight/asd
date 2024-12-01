@@ -97,12 +97,43 @@ jobs:
           tags: ${{ secrets.DOCKER_USERNAME }}/validator:${{ github.sha }}
           labels: ${{ steps.meta.outputs.labels }}
 
+  web-app:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check Out
+        uses: actions/checkout@v4
+
+      - name: Log in Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_TOKEN }}
+
+      - name: Set up Docker BuildX
+        uses: docker/setup-buildx-action@v3
+      
+      - name: Extract WebApp Metadata
+        id: meta
+        uses: docker/metadata-action@v5
+        with:
+          images: ${{ secrets.DOCKER_USERNAME }}/web-app
+
+      - name: Build and Push WebApp
+        uses: docker/build-push-action@v6
+        with:
+          context: ./code/front/web-app
+          file: ./code/front/web-app/Dockerfile
+          push: true
+          tags: ${{ secrets.DOCKER_USERNAME }}/web-app:${{ github.sha }}
+          labels: ${{ steps.meta.outputs.labels }}
+
   operations:
     runs-on: ubuntu-latest
     needs:
       - gateway
       - integrator
       - validator
+      - web-app
     steps:
       - name: Check Out
         uses: actions/checkout@v4
