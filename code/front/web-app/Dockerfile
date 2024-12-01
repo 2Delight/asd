@@ -9,4 +9,4 @@ WORKDIR /app
 COPY . .
 
 RUN npm
-CMD ["npm", "start", "--host", "0.0.0.0"]
+CMD ["npm", "start"]
