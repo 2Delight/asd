@@ -4,7 +4,7 @@ GOVER=$(shell go version | perl -nle '/(go\d\S+)/; print $$1;')
 SMARTIMPORTS=${BINDIR}/smartimports_${GOVER}
 LINTVER=v1.61.0
 LINTBIN=${BINDIR}/lint_${GOVER}_${LINTVER}
-PACKAGE=gateway-api/cmd/app
+PACKAGE=validator-api/cmd/app
 
 all: format build test lint
 
@@ -72,25 +72,7 @@ vendor-proto/google/protobuf:
 	mv vendor-proto/protobuf/src/google/protobuf vendor-proto/google
 	rm -rf vendor-proto/protobuf
 
-generate: generate-gateway-api generate-integrator-api generate-validator-api
-
-generate-gateway-api: bin vendor-proto/google/api vendor-proto/google/protobuf
-	mkdir -p pkg/gateway
-	$(PROTOC) -I api/gateway -I vendor-proto \
-	--go_out pkg/gateway --go_opt paths=source_relative \
-	--go-grpc_out pkg/gateway --go-grpc_opt paths=source_relative \
-	--grpc-gateway_out pkg/gateway --grpc-gateway_opt paths=source_relative \
-	--validate_out="lang=go,paths=source_relative:pkg/gateway" \
-	api/gateway/gateway.proto
-
-generate-integrator-api: bin vendor-proto/google/api vendor-proto/google/protobuf
-	mkdir -p pkg/integrator
-	$(PROTOC) -I api/integrator -I vendor-proto \
-	--go_out pkg/integrator --go_opt paths=source_relative \
-	--go-grpc_out pkg/integrator --go-grpc_opt paths=source_relative \
-	--grpc-gateway_out pkg/integrator --grpc-gateway_opt paths=source_relative \
-	--validate_out="lang=go,paths=source_relative:pkg/integrator" \
-	api/integrator/integrator.proto
+generate: generate-validator-api
 
 generate-validator-api: bin vendor-proto/google/api vendor-proto/google/protobuf
 	mkdir -p pkg/validator

@@ -1,0 +1,58 @@
+syntax = "proto3";
+
+package validator;
+
+option go_package = "gateway-api/pkg/validator";
+
+import "google/api/annotations.proto";
+import "google/protobuf/timestamp.proto";
+
+// ValidatorService предоставляет методы для валидации спецификаций.
+service ValidatorService {
+  // Провалидировать спецификацию.
+  rpc ValidateSpecification(ValidateSpecificationRequest) returns (ValidationResult) {
+    option (google.api.http) = {
+      post: "/validator/specifications/validate"
+    };
+  }
+
+  rpc GetHello(GetHelloRequest) returns (GetHelloResponse) {
+    option (google.api.http) = {
+      get: "/ping"
+    };
+  }
+}
+
+// Запрос на валидацию спецификации.
+message ValidateSpecificationRequest {
+  Specification specification = 1; // Спецификация для валидации.
+}
+
+// Результат валидации.
+message ValidationResult {
+  bool is_valid = 1;                // Является ли спецификация валидной.
+  repeated Error errors = 2;       // Список ошибок.
+  repeated Hint hints = 3;         // Список подсказок.
+}
+
+message Specification {
+  int64 id = 1;                    // Уникальный идентификатор спецификации.
+  string content = 3;              // YAML-контент спецификации.
+}
+
+// Ошибка, найденная при валидации.
+message Error {
+  string code = 1;                 // Код ошибки.
+  string message = 2;              // Описание ошибки.
+}
+
+// Подсказка, найденная при валидации.
+message Hint {
+  string message = 1;              // Текст подсказки.
+}
+
+message GetHelloRequest {}
+
+message GetHelloResponse {
+  string pong = 1;
+}

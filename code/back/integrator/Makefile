@@ -4,7 +4,7 @@ GOVER=$(shell go version | perl -nle '/(go\d\S+)/; print $$1;')
 SMARTIMPORTS=${BINDIR}/smartimports_${GOVER}
 LINTVER=v1.61.0
 LINTBIN=${BINDIR}/lint_${GOVER}_${LINTVER}
-PACKAGE=banks-api/cmd/app
+PACKAGE=integrator-api/cmd/app
 
 all: format build test lint
 
