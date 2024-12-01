@@ -181,10 +181,18 @@ jobs:
       - name: Update Tag
         run: |
           sed -i 's/TAG=.*/TAG=${{ github.sha }}/g' .env
+          sed -i 's/tag: .*/tag: ${{ github.sha }}/g' remote/charts/gateway/values.yaml
+          sed -i 's/tag: .*/tag: ${{ github.sha }}/g' remote/charts/integrator/values.yaml
           sed -i 's/tag: .*/tag: ${{ github.sha }}/g' remote/charts/pingus/values.yaml
+          sed -i 's/tag: .*/tag: ${{ github.sha }}/g' remote/charts/validator/values.yaml
+          sed -i 's/tag: .*/tag: ${{ github.sha }}/g' remote/charts/web-app/values.yaml
 
           git add .env
+          git add remote/charts/gateway/values.yaml
+          git add remote/charts/integrator/values.yaml
           git add remote/charts/pingus/values.yaml
+          git add remote/charts/validator/values.yaml
+          git add remote/charts/web-app/values.yaml
 
           git commit -m "Tag update: ${{ github.sha }}"
           git push
