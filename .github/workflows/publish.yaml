@@ -108,7 +108,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           repository: 2Delight/mline-operations
-          ref: main
+          ref: master
           token: ${{ secrets.OPERATIONS_REPO_UPDATE }}
 
       - name: Setup Git Config
