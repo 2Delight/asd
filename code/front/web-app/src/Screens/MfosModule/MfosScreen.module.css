@@ -8,3 +8,13 @@ body,
     display: flex;
     padding-bottom: 20px;
 }
+
+.notFoundText {
+    display: flex;
+    text-align: center;
+    font-size: 30px;
+    padding-bottom: 20px;
+    padding-top: 20px;
+    margin: auto;
+    align-items: center;
+}

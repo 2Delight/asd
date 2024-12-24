@@ -23,7 +23,7 @@ const UserScreen = () => {
 
     const fetchSpecification = async () => {
         try {
-            const spec = await specificationService.getSpecificationById(1, false);  // true для мока
+            const spec = await specificationService.getSpecificationById(1, true);  // true для мока
             setSpecification(spec.content);
             console.log(spec.content)
         } catch (error) {
@@ -38,7 +38,7 @@ const UserScreen = () => {
 
     const validateSpecification = async () => {
         try {
-            const result = await specificationService.validateSpecification(id, specification, false); // true для мока
+            const result = await specificationService.validateSpecification(id, specification, true); // true для мока
             setValidationResult(result);
             if (result.isValid) {
                 console.log("Validation successful!");
@@ -55,6 +55,14 @@ const UserScreen = () => {
                             endLineNumber: 1,
                             endColumn: 50,
                             message: "Invalid syntax detected in the first line.",
+                            severity: window.monaco.MarkerSeverity.Error,
+                        },
+                        {
+                            startLineNumber: 5,
+                            startColumn: 1,
+                            endLineNumber: 1,
+                            endColumn: 50,
+                            message: "Not valid specification for mlops platform",
                             severity: window.monaco.MarkerSeverity.Error,
                         },
                     ]);
@@ -93,7 +101,10 @@ const UserScreen = () => {
 
     if (id == undefined) {
         return (
-            <div>Not found with id</div>
+            <div className={classes.userScreen}>
+                <Header props={header}/>
+                <div className={classes.notFoundText}>Not found id</div>
+            </div>
         )
     }
 
