@@ -1,0 +1,10 @@
+version: '3'
+
+services:
+  web-admin:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    hostname: web-admin
+    ports:
+      - '80:80'
